@@ -106,7 +106,7 @@ const dict = {
         },
         {
           title: '밖으로 나가는 것이 없습니다',
-          desc: '작성한 메모는 오직 사용자 PC에만 저장됩니다. 계정도, 서버 전송도, 수집도 없는 평범한 메모장입니다.',
+          desc: '작성한 메모는 오직 사용자 PC에만 저장됩니다. 계정도, 서버 전송도, 수집도 없는 평범한 메모장입니다. 딱 하나 있다면, 새 버전이 나왔는지만 GitHub에서 확인해 앱 메뉴 위쪽에 작은 알림 점으로 알려드립니다 — 그때도 메모나 개인정보는 나가지 않습니다.',
         },
         {
           title: '메모리 이야기',
@@ -255,7 +255,7 @@ const dict = {
         },
         {
           title: 'Nothing leaves your PC',
-          desc: 'Notes are stored only on your machine. No account, no server, no collection — it is an ordinary notepad.',
+          desc: 'Notes are stored only on your machine. No account, no server, no collection — it is an ordinary notepad. The one exception: it checks GitHub for a newer version and shows a small dot at the top of the app menu — even then, no notes or personal data leave your PC.',
         },
         {
           title: 'About memory',
