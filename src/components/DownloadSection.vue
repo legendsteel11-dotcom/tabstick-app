@@ -5,13 +5,16 @@ import { t } from '../i18n'
 // 각 href를 채우면 끝 - 레이아웃·문구는 그대로다.
 const ready = true
 
-// 버전은 여기 한 곳만 - 파일명·다운로드 URL이 전부 이걸로 만들어진다. 버전업/정식 전환 때
-// version·channel만 고친다(channel=''이면 (Beta) 표기가 사라진다). 자산명 규칙: TabStick-<ver>-win-x64-<...>.
+// 표시용 버전(배지 "v1.0.0")과 릴리즈 태그(v1.0.0)는 여기. 정식 전환 때 channel=''이면 (Beta) 사라짐.
 const version = '1.0.0'
 const channel = 'Beta'
-const base = `TabStick-${version}-win-x64`
 
-// GitHub 릴리즈 자산으로 직접 링크. 태그 v<ver>에 같은 이름의 자산이 올라가 있어야 동작한다.
+// 파일명 라벨엔 베타 표기 b를 붙인다 - 자산명만 그렇고, 앱 버전·릴리즈 태그는 1.0.0 그대로다.
+// 자산명 규칙: TabStick-<fileVer>-win-x64-<...>. 정식 땐 fileVer을 version과 같게 두면 된다.
+const fileVer = '1.0.0b'
+const base = `TabStick-${fileVer}-win-x64`
+
+// GitHub 릴리즈 자산으로 직접 링크. 태그는 v<version>(=v1.0.0), 파일명은 base(1.0.0b).
 const relBase = `https://github.com/legendsteel11-dotcom/tabstick-app/releases/download/v${version}`
 const dl = {
   setup: { size: '49 MB', file: `${base}-setup.exe`, href: `${relBase}/${base}-setup.exe` },
