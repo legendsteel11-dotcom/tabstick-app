@@ -85,7 +85,7 @@ const dict = {
         },
         {
           title: '메모지 자리와 크기 맞추기',
-          desc: '스티커 우클릭 메뉴에서 메모지를 창의 좌/우, 안/밖으로 보낼 수 있습니다(모든 스티커 공통). 가장자리나 모서리를 끌어 크기를 바꾸고, 더블클릭하면 내용에 맞게 자동으로 맞춰집니다.',
+          desc: '스티커 우클릭 메뉴에서 메모지를 창의 좌/우, 안/밖으로 보낼 수 있습니다(모든 스티커 공통). 가장자리나 모서리를 끌어 크기를 바꾸고, 더블클릭하면 내용에 맞게 자동으로 맞춰집니다. 크기를 바꿀 때 Shift를 누른 채 끌면 20px 격자에 맞아, 여러 메모지를 같은 크기로 맞추기 쉽습니다.',
         },
         {
           title: '떼고, 다시 붙이기',
@@ -234,7 +234,7 @@ const dict = {
         },
         {
           title: 'Place and size the paper',
-          desc: 'From the sticker right-click menu, send the paper to the left or right of the window, inside or outside (applies to all stickers). Drag an edge or corner to resize, or double-click to fit the content.',
+          desc: 'From the sticker right-click menu, send the paper to the left or right of the window, inside or outside (applies to all stickers). Drag an edge or corner to resize, or double-click to fit the content. Hold Shift while resizing to snap to a 20px grid — handy for making several notes the same size.',
         },
         {
           title: 'Take it off, put it back',
