@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { t } from '../i18n'
+import { computed } from 'vue'
+import { t, lang } from '../i18n'
+
+// 언어별 히어로 GIF. 영문 UI 캡처는 영문판에만 쓰고, 캡처가 없는 언어는 한글판으로 떨어진다.
+const heroSrc = computed(() => (lang.value === 'en' ? '/screenshots/hero-en.gif' : '/screenshots/hero.gif'))
 </script>
 
 <template>
@@ -14,7 +18,7 @@ import { t } from '../i18n'
         <p class="tagline">{{ t.hero.tagline }}</p>
       </div>
       <div class="shot">
-        <img src="/screenshots/hero.gif" alt="브라우저 창에 붙은 TabStick 인덱스 메모와 팔레트" />
+        <img :src="heroSrc" alt="TabStick index notes attached to browser windows, with the color palette" />
         <!-- GIF는 프레임을 줄여 실제보다 끊겨 보일 수 있다는 안내. 이미지 하단 중앙에 작고 연하게. -->
         <p class="gif-note">{{ t.hero.gifNote }}</p>
       </div>
