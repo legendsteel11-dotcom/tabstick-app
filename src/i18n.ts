@@ -21,7 +21,6 @@ const dict = {
       eyebrow: 'Windows 인덱스 스티커 메모',
       title: 'TabStick',
       tagline: '메모를 바탕화면이 아니라, 그 메모가 필요한 “창” 옆에 붙입니다.',
-      gifNote: '미리보기 GIF라 실제보다 끊겨 보일 수 있습니다',
     },
     why: {
       title: '왜 만들게 되었나요?',
@@ -53,11 +52,11 @@ const dict = {
         },
         {
           title: '세가지 팔레트 모양과 크기-',
-          desc: '기본형, 가로형, 세로형, 그리고 크기를 취향대로 선택하세요. 팔레트 분실 시 트레이 메뉴에서 언제든지 다시 찾을 수 있습니다.',
+          desc: '기본형, 가로형, 세로형, 그리고 크기를 취향대로 선택하세요. 팔레트는 트레이 메뉴에서 언제든지 다시 불러올 수 있습니다.',
         },
         {
           title: '편리한 앱 메뉴-',
-          desc: '스티커 관리에서는 메모의 내용을 한번에 파악하고 지우거나 내보낼 수 있고, 잘 모르는 것은 언제든지 도움말을 참고할 수 있습니다.',
+          desc: '스티커 관리에서는 메모의 내용을 한번에 파악하고 지우거나 내보낼 수 있고, 궁금한 것은 언제든지 도움말에서 바로 확인할 수 있습니다.',
         },
       ],
     },
@@ -81,7 +80,7 @@ const dict = {
         },
         {
           title: '가볍게 적기',
-          desc: '편집에 신경 쓰지 말고 빠르게 적으세요. 한 글자만 입력해도 자동 저장되고, 링크나 경로는 Ctrl+클릭으로 바로 열립니다.',
+          desc: '떠오르는 대로 빠르게 적으세요. 한 글자만 입력해도 자동 저장되고, 링크나 경로는 Ctrl+클릭으로 바로 열립니다.',
         },
         {
           title: '메모지 자리와 크기 맞추기',
@@ -97,39 +96,8 @@ const dict = {
         },
       ],
     },
-    trust: {
-      title: '드리는 말씀',
-      items: [
-        {
-          title: '편법을 쓰지 않았습니다',
-          desc: '창에 붙는 동작은 윈도우가 허용하는 기술만으로 만들었습니다. 다른 창의 PID 추적, 각종 훅, 메모리 추적, 레지스트리 조작 같은 방법은 쓰지 않았습니다. 그런 편법을 썼다면 앱을 껐다 켜도 스티커를 자동으로 다시 붙여 드릴 수 있었겠지만, 그렇게 하지 않았습니다(실험은 했고, 코드에서 지웠습니다).',
-        },
-        {
-          title: '밖으로 나가는 것이 없습니다',
-          desc: '작성한 메모는 오직 사용자 PC에만 저장됩니다. 계정도, 서버 전송도, 수집도 없는 평범한 메모장입니다. 딱 하나 있다면, 새 버전이 나왔는지만 GitHub에서 확인해 앱 메뉴 위쪽에 작은 알림 점으로 알려드립니다 — 그때도 메모나 개인정보는 나가지 않습니다.',
-        },
-        {
-          title: '메모리 이야기',
-          desc: '.NET 8 데스크톱 런타임이 이미 있으면 보통 30~50MB를 씁니다. 없어서 독립 실행형을 쓰면 그보다 크게 잡힐 수 있는데, 앱이 무거워서가 아니라 실행에 필요한 기반 파일을 함께 들고 있기 때문입니다(예전에 게임 하려고 DirectX를 깔던 것과 비슷합니다). 메모를 쓰는 것 외에 메모리가 계속 늘거나 CPU를 물고 있는 일은 없습니다.',
-        },
-        {
-          title: '이런 앱은 아닙니다',
-          desc: '새 메모를 무한정 추가하는 기능, 편집창을 화려하게 꾸미고 폰트를 바꾸는 기능, 스티커의 배경색을 마음대로 바꾸는 기능이 없음은 너그러이 양해 바랍니다.',
-        },
-        {
-          title: '더 좋은 메모앱은 많습니다',
-          desc: '보다 더 좋고 기능이 많은 메모앱은 셀 수 없이 많이 있습니다. 사용중인 메모앱도 계속 사용하면서 탭스틱도 한 번쯤 사용해 보세요.',
-        },
-        {
-          title: '흔한 그 부착형 메모지에 가깝습니다',
-          desc: '잃어버려도 괜찮은, 잠깐 참고하고 넘길 것을 모니터 옆에 붙여 두는 컨셉입니다. 가벼운 용도로 사용하길 권해 드립니다.',
-        },
-        {
-          title: '앞으로',
-          desc: '기능을 늘리기보다 최적화와 안정성에 힘을 쏟겠습니다. 많은 피드백은 제품의 품질을 향상시키는 데 큰 도움이 됩니다.',
-        },
-      ],
-    },
+    // '드리는 말씀'(trust) 섹션은 2026-07-26에 통째로 뺐다 - 다운로드 버튼 바로 위에서 단점·해명을
+    // 먼저 꺼내는 자리였다. 문구 원문은 git 이력에 있고, 필요하면 FAQ로 되살린다.
     download: {
       title: '다운로드',
       recommend: '추천',
@@ -141,21 +109,18 @@ const dict = {
       portableDesc: '압축을 풀고 바로 실행합니다.',
       lightTitle: '경량',
       lightDesc: '.NET 8 데스크톱 런타임이 필요합니다.',
-      memoryQ: '메모리 사용량이 커 보이나요?',
-      memoryA:
-        "대부분은 윈도우가 필요할 때 곧바로 돌려받는 '빌려둔' 메모리라, 실제 사용량이 아닙니다. .NET 앱에선 흔한 정상 동작이에요. 낮은 수치를 원하면 위의 경량 버전을 받으세요(.NET 필요).",
       soon: '다운로드 링크는 공개 준비 중입니다.',
       requirement: 'Windows 10 / 11 · 64비트',
       bothApps:
         '이 개발자의 다른 앱 Edgetree도 함께 쓰실 계획이라면, .NET 8을 한 번 설치해 두시길 권합니다. 두 앱 모두 경량 버전으로 가볍게 돌아갑니다.',
       smartscreenNote:
-        '처음 실행할 때 윈도우 SmartScreen이 경고를 띄울 수 있습니다. 1인 개발자가 서명 없이 낸 앱에서 흔한 일이며, 추가 정보 → 실행으로 넘어가면 됩니다. 훅이나 추적 없이 허용된 Windows 기능만 쓰고, 메모는 오직 내 PC에만 저장됩니다. 배포 전 VirusTotal로도 확인합니다.',
+        '처음 실행할 때 윈도우 SmartScreen 창이 뜨면 추가 정보 → 실행을 누르면 됩니다. 메모는 오직 사용자의 PC에만 저장됩니다.',
     },
     footer: {
-      contact: '요청·버그 신고',
+      contact: '문의',
       otherTool: '같은 개발자의 다른 도구',
       otherToolName: 'Edgetree',
-      copyright: '© 2026 TabStick. 개인 프로젝트.',
+      copyright: '© 2026 TabStick.',
     },
   },
   en: {
@@ -170,7 +135,6 @@ const dict = {
       eyebrow: 'Windows index-sticker notes',
       title: 'TabStick',
       tagline: 'Stick a note beside the window it belongs to — not on your desktop.',
-      gifNote: 'Preview GIF — smoother in the actual app',
     },
     why: {
       title: 'Why I made it',
@@ -202,11 +166,11 @@ const dict = {
         },
         {
           title: 'Three palette shapes and sizes',
-          desc: 'Pick default, row, or column — and a size to taste. Lost the palette? Find it again anytime from the tray menu.',
+          desc: 'Pick default, row, or column — and a size to taste. The palette is always a tray-menu click away.',
         },
         {
           title: 'The app menu',
-          desc: 'The Stickers tab shows every note at a glance to delete or export, and help is there whenever something is unclear.',
+          desc: 'The Stickers tab shows every note at a glance to delete or export, and help is a click away whenever you want it.',
         },
       ],
     },
@@ -230,7 +194,7 @@ const dict = {
         },
         {
           title: 'Write it down, lightly',
-          desc: 'Do not fuss over formatting — just write. A single character saves automatically, and links or paths open with Ctrl+click.',
+          desc: 'Write as it comes to you. A single character saves automatically, and links or paths open with Ctrl+click.',
         },
         {
           title: 'Place and size the paper',
@@ -246,39 +210,6 @@ const dict = {
         },
       ],
     },
-    trust: {
-      title: 'A word to you',
-      items: [
-        {
-          title: 'No tricks',
-          desc: 'Sticking to a window is done only with what Windows permits. No tracking other processes by PID, no hooks, no memory scanning, no registry meddling. With those tricks the stickers could have re-attached themselves after a restart — I tried it, and removed it from the code.',
-        },
-        {
-          title: 'Nothing leaves your PC',
-          desc: 'Notes are stored only on your machine. No account, no server, no collection — it is an ordinary notepad. The one exception: it checks GitHub for a newer version and shows a small dot at the top of the app menu — even then, no notes or personal data leave your PC.',
-        },
-        {
-          title: 'About memory',
-          desc: 'With the .NET 8 Desktop Runtime already installed it usually sits around 30–50 MB. The standalone build can look larger, not because the app is heavy but because it carries the runtime it needs with it. Beyond writing notes, it does not keep growing or hold on to the CPU.',
-        },
-        {
-          title: 'What it is not',
-          desc: 'No endlessly adding new notes, no dressing up the editor or switching fonts, no freely recoloring a sticker’s background — we hope you’ll bear with what it leaves out.',
-        },
-        {
-          title: 'Better note apps exist',
-          desc: 'There are countless note apps that are better and do far more. Keep using the one you have — and give TabStick a try too.',
-        },
-        {
-          title: 'Closer to a plain stick-on note',
-          desc: 'Something you can afford to lose, that you glance at and move on — parked at the side of your monitor. Best kept for light, casual use.',
-        },
-        {
-          title: 'Going forward',
-          desc: 'Effort goes into stability and optimization rather than more features. Plenty of feedback goes a long way toward improving the product.',
-        },
-      ],
-    },
     download: {
       title: 'Download',
       recommend: 'Recommended',
@@ -290,21 +221,18 @@ const dict = {
       portableDesc: 'Unzip and run. No installation.',
       lightTitle: 'Light',
       lightDesc: 'Needs the .NET 8 Desktop Runtime.',
-      memoryQ: 'Does it look like a lot of memory?',
-      memoryA:
-        "Most of it is 'borrowed' — Windows takes it back the moment it's needed — not real usage. This is normal for .NET apps. Want the low number? Grab the Light build above (needs .NET).",
       soon: 'Download links are being prepared.',
       requirement: 'Windows 10 / 11 · 64-bit',
       bothApps:
         "Planning to use Edgetree, this developer's other app, too? Install .NET 8 once and run the Light build of both — lighter on memory and disk.",
       smartscreenNote:
-        'The first run may show a Windows SmartScreen prompt — common for an unsigned app from a solo developer; choose More info → Run. It uses only permitted Windows features, with no hooks or tracking, and your notes stay on your PC. Builds are checked on VirusTotal before release.',
+        'If Windows SmartScreen appears on the first run, choose More info → Run. Your notes are stored only on your PC.',
     },
     footer: {
-      contact: 'Requests & bug reports',
+      contact: 'Requests',
       otherTool: 'Another tool by the same maker',
       otherToolName: 'Edgetree',
-      copyright: '© 2026 TabStick. A personal project.',
+      copyright: '© 2026 TabStick.',
     },
   },
 } as const

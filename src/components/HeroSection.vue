@@ -12,15 +12,12 @@ const heroSrc = computed(() => (lang.value === 'en' ? '/screenshots/hero-en.gif'
       <div class="copy">
         <img src="/icon.png" alt="" width="56" height="56" class="icon" />
         <p class="eyebrow">{{ t.hero.eyebrow }}</p>
-        <!-- Beta는 절대배치라 제목 폭에 안 끼고 오른쪽 위에만 걸린다 → "TabStick"은 화면
-             중앙 그대로 유지된다(™ 표시처럼). -->
-        <h1 class="title">{{ t.hero.title }}<span class="beta">Beta</span></h1>
+        <!-- 제목 오른쪽 위에 ™처럼 걸려 있던 Beta 표시는 2026-07-26에 뗐다. -->
+        <h1 class="title">{{ t.hero.title }}</h1>
         <p class="tagline">{{ t.hero.tagline }}</p>
       </div>
       <div class="shot">
         <img :src="heroSrc" alt="TabStick index notes attached to browser windows, with the color palette" />
-        <!-- GIF는 프레임을 줄여 실제보다 끊겨 보일 수 있다는 안내. 이미지 하단 중앙에 작고 연하게. -->
-        <p class="gif-note">{{ t.hero.gifNote }}</p>
       </div>
     </div>
   </section>
@@ -58,24 +55,9 @@ h1 {
   font-size: 48px;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
-  /* 제목 상자를 글자 폭에 딱 맞춰(inline-block) .copy의 가운데 정렬로 중앙에 세운다.
-     Beta(absolute)는 이 상자 밖 오른쪽 위에 얹혀 폭에 끼지 않는다. */
+  /* 제목 상자를 글자 폭에 딱 맞춰(inline-block) .copy의 가운데 정렬로 중앙에 세운다. */
   display: inline-block;
   position: relative;
-}
-
-/* 타이틀 오른쪽 위에 ™처럼 작고 흐린 Beta. 절대배치라 "TabStick"의 중앙 정렬을 건드리지
-   않고, 단어 오른쪽 끝에 바짝 걸린다. 크기·흐림·위치는 아래 값으로 조절. */
-.beta {
-  position: absolute;
-  left: 100%;
-  top: 0.08em;
-  margin-left: 0.1em;
-  font-size: 0.3em;
-  font-weight: 500;
-  letter-spacing: 0;
-  color: var(--text);
-  opacity: 0.55;
 }
 
 .tagline {
@@ -101,23 +83,8 @@ h1 {
   box-shadow: 0 30px 70px -28px rgba(27, 33, 41, 0.35);
 }
 
-/* 이미지 하단 중앙에 겹치는 GIF 안내. 작고 연한 이탤릭. 배경 픽셀과 겹쳐도 읽히도록
-   옅은 흰 알약 배경을 살짝 깐다(순수 텍스트만이면 gif 내용에 따라 묻힌다). */
-.gif-note {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--text);
-  font-size: 12px;
-  font-style: italic;
-  opacity: 0.85;
-  white-space: nowrap;
-  pointer-events: none;
-}
+/* 히어로 이미지 하단에 겹쳐 있던 "미리보기 GIF" 안내는 2026-07-26에 뺐다 - 첫 화면에서
+   먼저 단서를 다는 글이었다. .shot의 position:relative는 남겨 둔다(다른 겹침에 쓸 자리). */
 
 @media (max-width: 720px) {
   h1 {

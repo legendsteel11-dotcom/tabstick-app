@@ -1,4 +1,4 @@
-# TabStick (Beta) v1.0.0
+﻿# TabStick v1.0.1
 
 ![TabStick — index notes that stick beside the window they belong to](public/screenshots/hero-en.gif)
 
@@ -20,13 +20,10 @@ Grab the latest build from the [**Releases**](../../releases) page:
 
 Windows 10 / 11, 64-bit.
 
-## Notes on trust
+## First run
 
-TabStick is an unsigned app from a solo developer, so the first run may show a
-Windows SmartScreen prompt — choose **More info → Run**. It uses only permitted
-Windows features, with **no hooks, no tracking, no registry tricks**, and your
-memos are stored **only on your PC**. Builds are checked on VirusTotal before
-release.
+Windows may show a SmartScreen prompt the first time — choose **More info → Run**.
+Your memos are stored **only on your PC**.
 
 ## About this repository
 
