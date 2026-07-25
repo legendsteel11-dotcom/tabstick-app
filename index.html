@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 앱 본문과 같은 Pretendard를 웹에서도 쓴다. 동적 서브셋이라 한글 글리프를
+         통째로 받지 않고 쓰인 조각만 내려받는다(공식 권장 방식). -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
+    />
+
+    <title>TabStick — 창에 붙는 인덱스 메모</title>
+    <meta name="description" content="메모를 바탕화면이 아니라, 그 메모가 필요한 창에 붙입니다. 9가지 색으로 정리하는 가벼운 Windows 메모 유틸." />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<script setup lang="ts">
+import { t } from '../i18n'
+</script>
+
+<template>
+  <section id="howto">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{{ t.howto.title }}</h2>
+      </div>
+
+      <ol class="steps">
+        <li v-for="(step, i) in t.howto.steps" :key="step.title" class="step">
+          <span class="num">{{ i + 1 }}</span>
+          <div class="body">
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.desc }}</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.steps {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.body p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+</style>

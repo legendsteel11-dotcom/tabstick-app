@@ -1,0 +1,140 @@
+:root {
+  /* TabStick 랜딩은 밝은 화이트 톤(2026-07-23 결정). Edgetree의 다크 톤을 그대로 쓰지 않는다.
+     전체 배경은 순백보다 살짝 눌러(#f0f0f2, 2026-07-24 요청) 흰 카드가 은은히 떠 보이게 한다. */
+  --bg: #f0f0f2;
+  --bg-alt: #f6f7f9;
+  --bg-card: #ffffff;
+  /* 섹션 배경(--bg-alt)보다 한 단계 눌린 톤. 카드가 떠 보이지 않고
+     경계만 은은히 잡히게 하는 자리다. */
+  --bg-sunken: #eceef2;
+  --border: #e5e8ec;
+  --text: #5b6673;
+  --text-strong: #1b2129;
+  --accent: #4c7adb;        /* 앱의 선택 강조색(토글 켜짐)과 같은 파랑 */
+  --accent-strong: #3a63c4;
+  --accent-bg: rgba(76, 122, 219, 0.10);
+
+  color-scheme: light;
+  /* 가변 폰트(Pretendard Variable)를 먼저, 없으면 정적 Pretendard, 그다음 시스템 폰트. */
+  font: 16px/1.6 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 폼 요소는 font-family를 상속하지 않고 브라우저 UI 폰트로 떨어진다 - 언어 토글
+   버튼까지 같은 폰트로 맞춘다. */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  color: var(--text-strong);
+  font-weight: 600;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1100px, 100% - 48px);
+  margin: 0 auto;
+}
+
+section {
+  padding: 40px 0;
+}
+
+@media (max-width: 720px) {
+  section {
+    padding: 28px 0;
+  }
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-heading h2 {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  /* 제목을 순한 그레이로 살짝 죽이고(순검정 text-strong 대신), 대신 한 단계 굵게(500→600)
+     눌러 무게는 유지한다(2026-07-24 요청). */
+  color: #454e59;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+/* 아직 링크가 없는 다운로드 버튼 - 자리만 잡되 눌러도 아무 일 없음을 알린다. */
+.btn.is-disabled {
+  cursor: default;
+  opacity: 0.55;
+  pointer-events: none;
+}
