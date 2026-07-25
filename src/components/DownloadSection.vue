@@ -5,16 +5,17 @@ import { t } from '../i18n'
 // 각 href를 채우면 끝 - 레이아웃·문구는 그대로다.
 const ready = true
 
-// 표시용 버전(배지 "v1.0.0")과 릴리즈 태그(v1.0.0)는 여기. 정식 전환 때 channel=''이면 (Beta) 사라짐.
-const version = '1.0.0'
-const channel = 'Beta'
+// 표시용 버전(배지 "v1.0.1")과 릴리즈 태그(v1.0.1)는 여기. channel이 비면 (Beta) 알약이 사라진다 -
+// 2026-07-26에 뗐다(개인 프로그램의 베타 표기가 "덜 만든 것"으로 읽힌다는 지적).
+const version = '1.0.1'
+const channel = ''
 
-// 파일명 라벨엔 베타 표기 b를 붙인다 - 자산명만 그렇고, 앱 버전·릴리즈 태그는 1.0.0 그대로다.
-// 자산명 규칙: TabStick-<fileVer>-win-x64-<...>. 정식 땐 fileVer을 version과 같게 두면 된다.
-const fileVer = '1.0.0b'
+// 자산명 규칙: TabStick-<fileVer>-win-x64-<...>. 베타 땐 파일명에만 b를 붙였고(1.0.0b),
+// 정식부터는 version과 같다.
+const fileVer = version
 const base = `TabStick-${fileVer}-win-x64`
 
-// GitHub 릴리즈 자산으로 직접 링크. 태그는 v<version>(=v1.0.0), 파일명은 base(1.0.0b).
+// GitHub 릴리즈 자산으로 직접 링크. 태그는 v<version>, 파일명은 base.
 const relBase = `https://github.com/legendsteel11-dotcom/tabstick-app/releases/download/v${version}`
 const dl = {
   setup: { size: '49 MB', file: `${base}-setup.exe`, href: `${relBase}/${base}-setup.exe` },
@@ -103,11 +104,8 @@ const dl = {
         </a>
       </div>
 
-      <!-- 메모리 설명은 접어 둔다. 궁금한 사람만 펴 보게 해 캐주얼 사용자에게 안 튀도록. -->
-      <details class="memory">
-        <summary>{{ t.download.memoryQ }}</summary>
-        <p>{{ t.download.memoryA }}</p>
-      </details>
+      <!-- 접이식 "메모리 사용량이 커 보이나요?"는 2026-07-26에 뺐다 - 접어 뒀어도 다운로드
+           버튼 바로 아래에서 먼저 변명을 꺼내는 꼴이었다. 설명이 필요하면 FAQ로. -->
 
       <!-- 두 앱을 함께 쓰는 사람을 위한 팁: .NET 8 한 번 설치 → 양쪽 경량 버전. Edtree 앱엔 반대로 TabStick을 가리키게. -->
       <p class="cross-tip">{{ t.download.bothApps }}</p>
@@ -123,6 +121,13 @@ const dl = {
 </template>
 
 <style scoped>
+/* 다운로드 위 가는 수평선. 원래는 바로 위 '드리는 말씀' 섹션의 배경·테두리가 경계를 만들어
+   줬는데, 그 섹션을 빼면서 사용방법과 다운로드가 그냥 이어져 버렸다(2026-07-26). 화면 폭을
+   가로지르는 한 줄이라 섹션이 갈리는 것만 알려 주고, 색은 본문 경계선 그대로라 눈에 띄지 않는다. */
+#download {
+  border-top: 1px solid var(--border);
+}
+
 .title-row {
   display: flex;
   align-items: center;
@@ -315,49 +320,11 @@ const dl = {
 }
 
 /* ---------- 메모리 설명(접이식) ---------- */
-.memory {
-  max-width: 560px;
-  margin: 24px auto 0;
-  text-align: center;
-}
-
-.memory summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent-strong);
-  list-style: none;
-}
-
-.memory summary::-webkit-details-marker {
-  display: none;
-}
-
-.memory summary::before {
-  content: '▸';
-  display: inline-block;
-  transition: transform 0.15s ease;
-}
-
-.memory[open] summary::before {
-  transform: rotate(90deg);
-}
-
-.memory p {
-  margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.7;
-  opacity: 0.75;
-  text-align: left;
-}
-
-/* 두 앱 함께 쓰는 사람용 팁. 경고(스마트스크린)와 달리 도움 제안이라 옅은 강조색 상자로 둔다. */
+/* 두 앱 함께 쓰는 사람용 팁. 경고(스마트스크린)와 달리 도움 제안이라 옅은 강조색 상자로 둔다.
+   접이식 메모리 설명이 있던 자리라, 버튼 묶음과의 간격은 그쪽이 쓰던 24를 물려받는다. */
 .cross-tip {
   max-width: 560px;
-  margin: 16px auto 0;
+  margin: 24px auto 0;
   padding: 10px 16px;
   background: var(--accent-bg);
   border-radius: 10px;
