@@ -1,13 +1,13 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { t } from '../i18n'
 
 // 릴리즈 공개 전이라 링크는 비워 둔다(버튼은 '준비 중'으로 비활성). 공개 때 ready=true로 바꾸고
 // 각 href를 채우면 끝 - 레이아웃·문구는 그대로다.
 const ready = true
 
-// 표시용 버전(배지 "v1.0.1")과 릴리즈 태그(v1.0.1)는 여기. channel이 비면 (Beta) 알약이 사라진다 -
+// 표시용 버전(배지 "v1.0.2")과 릴리즈 태그(v1.0.2)는 여기. channel이 비면 (Beta) 알약이 사라진다 -
 // 2026-07-26에 뗐다(개인 프로그램의 베타 표기가 "덜 만든 것"으로 읽힌다는 지적).
-const version = '1.0.1'
+const version = '1.0.2'
 const channel = ''
 
 // 자산명 규칙: TabStick-<fileVer>-win-x64-<...>. 베타 땐 파일명에만 b를 붙였고(1.0.0b),
