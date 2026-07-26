@@ -1,5 +1,33 @@
 ﻿<script setup lang="ts">
+import { ref, onUnmounted } from 'vue'
 import { t } from '../i18n'
+
+// 폰으로 들어온 사람에게 다음 걸음을 준다.
+//
+// 방문자의 46%가 모바일인데(2026-07-26 실측: Android 23 + iOS 23), 그 절반은 여기서 할 수 있는
+// 일이 없어 그냥 나갔다. 못 받는다고 말하는 대신 주소를 쥐여 준다 - 받을 수 없다는 사실은 어차피
+// 곧 알게 되고, 그때 손에 아무것도 없는 것이 문제였다.
+//
+// 복사하는 주소에는 UTM을 붙이지 않는다. 지금 페이지 주소를 그대로 복사하면 유입 표시가 따라
+// 퍼져 나가, 나중에 그 사람이 PC에서 연 것까지 원래 채널에서 온 것으로 잡힌다.
+const SITE = 'https://tabstick-app.vercel.app/'
+
+const copied = ref(false)
+let clear: ReturnType<typeof setTimeout> | undefined
+
+async function copySite() {
+  try {
+    await navigator.clipboard.writeText(SITE)
+    copied.value = true
+    clearTimeout(clear)
+    clear = setTimeout(() => (copied.value = false), 2000)
+  } catch {
+    // 클립보드가 막힌 브라우저(구형·비보안 컨텍스트)에서도 주소는 화면에 그대로 적혀 있어
+    // 손으로 골라 복사할 수 있다. 그래서 여기서 따로 알릴 것이 없다.
+  }
+}
+
+onUnmounted(() => clearTimeout(clear))
 
 // 릴리즈 공개 전이라 링크는 비워 둔다(버튼은 '준비 중'으로 비활성). 공개 때 ready=true로 바꾸고
 // 각 href를 채우면 끝 - 레이아웃·문구는 그대로다.
@@ -35,6 +63,18 @@ const dl = {
           <h2>{{ t.download.title }}</h2>
           <img class="memo-cat" src="/screenshots/cat-memo.png" alt="" aria-hidden="true"
                width="22" height="16" />
+        </div>
+      </div>
+
+      <!-- 모바일에서만 뜨는 안내. 다운로드 단추 '위'에 둔다 - 눌러 보고 나서 안 되는 것을
+           아는 것보다, 누르기 전에 다음 걸음을 아는 편이 낫다. -->
+      <div class="handoff">
+        <p>{{ t.download.mobileNote }}</p>
+        <div class="handoff-row">
+          <code>tabstick-app.vercel.app</code>
+          <button type="button" @click="copySite">
+            {{ copied ? t.download.copied : t.download.copyLink }}
+          </button>
         </div>
       </div>
 
@@ -126,6 +166,64 @@ const dl = {
    가로지르는 한 줄이라 섹션이 갈리는 것만 알려 주고, 색은 본문 경계선 그대로라 눈에 띄지 않는다. */
 #download {
   border-top: 1px solid var(--border);
+}
+
+/* 모바일 안내. 손가락으로 쓰는 기기에서만 보인다 - 화면 폭이 아니라 입력 방식으로 가른다
+   (창을 좁힌 데스크톱에는 뜨지 않는다). */
+.handoff {
+  display: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .handoff {
+    display: block;
+    max-width: 620px;
+    margin: 0 auto 16px;
+    padding: 14px 16px;
+    background: var(--accent-bg);
+    border-radius: 12px;
+    text-align: center;
+  }
+}
+
+.handoff p {
+  font-size: 14px;
+  line-height: 1.6;
+  /* 문구 안의 줄바꿈을 그대로 살린다 - 두 문장을 한 줄로 이으면 좁은 화면에서 아무 데서나
+     접혀 "PC에서" 같은 말이 줄 끝에 걸린다. */
+  white-space: pre-line;
+  color: var(--accent-strong);
+  margin-bottom: 10px;
+}
+
+.handoff-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.handoff code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-strong);
+  user-select: all;
+}
+
+.handoff button {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
 }
 
 .title-row {

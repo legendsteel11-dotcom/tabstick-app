@@ -109,6 +109,10 @@ const dict = {
       portableDesc: '압축을 풀고 바로 실행합니다.',
       lightTitle: '경량',
       lightDesc: '.NET 8 데스크톱 런타임이 필요합니다.',
+      // 줄바꿈은 마크업이 아니라 글의 일부다(.handoff p가 white-space: pre-line).
+      mobileNote: 'Windows에서 쓰는 앱입니다.\n주소를 복사해 두었다가 PC에서 열어보세요.',
+      copyLink: '주소 복사',
+      copied: '복사했습니다',
       soon: '다운로드 링크는 공개 준비 중입니다.',
       requirement: 'Windows 10 / 11 · 64비트',
       bothApps:
@@ -221,6 +225,9 @@ const dict = {
       portableDesc: 'Unzip and run. No installation.',
       lightTitle: 'Light',
       lightDesc: 'Needs the .NET 8 Desktop Runtime.',
+      mobileNote: 'TabStick runs on Windows.\nCopy the link and open it on your PC.',
+      copyLink: 'Copy link',
+      copied: 'Copied',
       soon: 'Download links are being prepared.',
       requirement: 'Windows 10 / 11 · 64-bit',
       bothApps:
