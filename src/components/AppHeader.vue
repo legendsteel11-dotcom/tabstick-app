@@ -104,5 +104,11 @@ import { t, lang, toggleLang } from '../i18n'
   .nav {
     display: none;
   }
+
+  /* 좁은 화면에선 메뉴가 사라져 언어 단추가 로고 옆에 붙어 버린다. 남는 자리를 왼쪽에 몰아
+     오른쪽 끝으로 보낸다 - 넓은 화면에선 .nav의 flex-grow가 이미 같은 일을 한다. */
+  .lang-toggle {
+    margin-left: auto;
+  }
 }
 </style>
