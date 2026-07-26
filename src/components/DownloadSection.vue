@@ -16,7 +16,7 @@ const fileVer = version
 const base = `TabStick-${fileVer}-win-x64`
 
 // GitHub 릴리즈 자산으로 직접 링크. 태그는 v<version>, 파일명은 base.
-const relBase = `https://github.com/legendsteel11-dotcom/tabstick-app/releases/download/v${version}`
+const relBase = `https://github.com/legendsteel11/tabstick-app/releases/download/v${version}`
 const dl = {
   setup: { size: '49 MB', file: `${base}-setup.exe`, href: `${relBase}/${base}-setup.exe` },
   portable: { size: '64 MB', file: `${base}-portable.zip`, href: `${relBase}/${base}-portable.zip` },
