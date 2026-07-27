@@ -11,7 +11,7 @@ import { t } from '../i18n'
 //
 // 복사하는 주소에는 UTM을 붙이지 않는다. 지금 페이지 주소를 그대로 복사하면 유입 표시가 따라
 // 퍼져 나가, 나중에 그 사람이 PC에서 연 것까지 원래 채널에서 온 것으로 잡힌다.
-const SITE = 'https://tabstick-app.vercel.app/'
+const SITE = 'https://tabstick.com/'
 
 const copied = ref(false)
 let clear: ReturnType<typeof setTimeout> | undefined
@@ -106,7 +106,7 @@ function trackDownload(build: 'setup' | 'portable' | 'light') {
       <div class="handoff">
         <p>{{ t.download.mobileNote }}</p>
         <div class="handoff-row">
-          <code>tabstick-app.vercel.app</code>
+          <code>tabstick.com</code>
           <button type="button" @click="copySite">
             {{ copied ? t.download.copied : t.download.copyLink }}
           </button>
