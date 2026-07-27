@@ -163,7 +163,9 @@ const dict = {
         // 앞뒤가 전부 '남아 있습니다'라서 그 하나가 손실로 읽히지 않는다.
         {
           q: '메모를 쓰는 중에 매번 저장해야 하나요?',
-          a: '아니요. 저장 버튼이 아예 없습니다. 타이핑을 멈추면 곧바로, 다른 곳을 클릭하면 그 순간 저장됩니다. 컴퓨터를 껐다 켠 뒤 스티커를 다시 붙여도 쓰던 글이 그대로 있습니다.',
+          // '저장 버튼이 없다'고 쓰지 않는다 - 스티커 메뉴에 저장이 실제로 있고, 그것은
+          // 메모를 파일로 빼내는 기능이라 뜻이 다르다. 아래 내보내기 항목과 부딪힌다.
+          a: '아니요, 따로 저장하지 않아도 됩니다. 타이핑을 멈추면 곧바로, 다른 곳을 클릭하면 그 순간 저장됩니다. 컴퓨터를 껐다 켠 뒤 스티커를 다시 붙여도 쓰던 글이 그대로 있습니다.',
         },
         {
           q: '창을 닫으면 메모 내용이 사라지나요?',
@@ -330,7 +332,7 @@ const dict = {
       items: [
         {
           q: 'Do I have to save while I am writing?',
-          a: 'No — there is no save button at all. It saves the moment you stop typing, and again the moment you click away. Shut the PC down, put the sticker back, and what you wrote is still there.',
+          a: 'No — you never have to save it yourself. It saves the moment you stop typing, and again the moment you click away. Shut the PC down, put the sticker back, and what you wrote is still there.',
         },
         {
           q: 'If I close a window, do I lose what I wrote?',
