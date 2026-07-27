@@ -38,6 +38,11 @@ const ready = true
 const version = '1.0.2'
 const channel = ''
 
+// 업데이트 내역 카드가 다는 버전. **아직 배포되지 않은 버전이 여기 먼저 온다** - 내역은
+// 릴리즈 직전에 써 두고, 파일이 실제로 올라간 날 version을 같은 값으로 올린다. 둘이 같아지는
+// 순간이 배포다. 반대로 version만 올리고 이걸 두면 지난 버전의 내역이 새 버전 카드로 남는다.
+const notesVersion = '1.0.3'
+
 // 자산명 규칙: TabStick-<fileVer>-win-x64-<...>. 베타 땐 파일명에만 b를 붙였고(1.0.0b),
 // 정식부터는 version과 같다.
 const fileVer = version
@@ -64,6 +69,16 @@ const dl = {
           <img class="memo-cat" src="/screenshots/cat-memo.png" alt="" aria-hidden="true"
                width="22" height="16" />
         </div>
+      </div>
+
+      <!-- 이번 판에 무엇이 생겼는가. 제목 아래, 단추 바로 위에 둔다 - 받을지 정하기 직전에
+           보는 자리라 새로 생긴 기능만 올린다. 고친 자리·내부 정리는 여기 올리지 않는다
+           (받는 사람에겐 그동안 고장나 있었다는 말로만 읽힌다). -->
+      <div class="notes">
+        <p class="notes-head">v{{ notesVersion }} {{ t.download.notesTitle }}</p>
+        <ul>
+          <li v-for="line in t.download.notes" :key="line">{{ line }}</li>
+        </ul>
       </div>
 
       <!-- 모바일에서만 뜨는 안내. 다운로드 단추 '위'에 둔다 - 눌러 보고 나서 안 되는 것을
@@ -231,6 +246,51 @@ const dl = {
   align-items: center;
   justify-content: center;
   gap: 12px;
+}
+
+/* ---------- 업데이트 내역 ---------- */
+/* 단추 바로 위에 서지만 단추보다 조용해야 한다 - 카드 배경·가는 테두리로 두고, 색을 채운
+   히어로가 시선을 그대로 가져가게 둔다. 폭은 히어로와 같은 620이라 한 기둥으로 읽힌다. */
+.notes {
+  max-width: 620px;
+  margin: 0 auto 18px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.notes-head {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-strong);
+  margin-bottom: 10px;
+}
+
+.notes ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+/* 점은 ::marker 대신 직접 찍는다 - 접힌 줄이 점 아래로 파고들지 않게 본문을 들여쓰고
+   점만 그 왼쪽에 세운다. */
+.notes li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+.notes li::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .memo-cat {

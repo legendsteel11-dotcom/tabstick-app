@@ -109,6 +109,18 @@ const dict = {
       portableDesc: '압축을 풀고 바로 실행합니다.',
       lightTitle: '경량',
       lightDesc: '.NET 8 데스크톱 런타임이 필요합니다.',
+      // 업데이트 내역. 앱이 업데이트 뒤 첫 실행에 띄우는 창과 같은 글이다(EdgeIndex/WhatsNew.cs).
+      // 새로 생긴 것만 적는다 - 고친 자리는 받는 사람에게 "그동안 고장나 있었다"로 읽힌다.
+      // **DownloadSection의 notesVersion·version과 함께 올린다.** 내역만 앞서 나가면 새 기능을
+      // 광고하면서 링크는 옛 파일을 가리킨다.
+      notesTitle: '업데이트 내역',
+      notes: [
+        '스티커 우클릭 → 제목 입력 → 메모에 제목이 나타남(바로 편집 가능)',
+        '글꼴/메모 배경색 → 메모 우클릭으로 이동',
+        '스티커 우클릭 → 다시 집기 추가',
+        '윈도우 시작 시 자동실행 옵션 추가',
+        '모든 우클릭 메뉴 크기 조절 옵션 추가',
+      ],
       // 줄바꿈은 마크업이 아니라 글의 일부다(.handoff p가 white-space: pre-line).
       mobileNote: 'Windows에서 쓰는 앱입니다.\n주소를 복사해 두었다가 PC에서 열어보세요.',
       copyLink: '주소 복사',
@@ -225,6 +237,14 @@ const dict = {
       portableDesc: 'Unzip and run. No installation.',
       lightTitle: 'Light',
       lightDesc: 'Needs the .NET 8 Desktop Runtime.',
+      notesTitle: 'Update notes',
+      notes: [
+        'Sticker right-click → Title → the title appears on the memo (edit it there)',
+        "Font / memo background colour → moved to the memo's right-click menu",
+        'Sticker right-click → Pick up again, added',
+        'Option to start with Windows, added',
+        'Size option for every right-click menu, added',
+      ],
       mobileNote: 'TabStick runs on Windows.\nCopy the link and open it on your PC.',
       copyLink: 'Copy link',
       copied: 'Copied',
