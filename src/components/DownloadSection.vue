@@ -1,5 +1,6 @@
 ﻿<script setup lang="ts">
 import { ref, onUnmounted } from 'vue'
+import { track } from '@vercel/analytics'
 import { t } from '../i18n'
 
 // 폰으로 들어온 사람에게 다음 걸음을 준다.
@@ -16,6 +17,11 @@ const copied = ref(false)
 let clear: ReturnType<typeof setTimeout> | undefined
 
 async function copySite() {
+  // 폰으로 온 사람이 여기서 멈추지 않고 PC로 넘어갈 뜻을 보인 순간. 방문자의 절반 이상이
+  // 모바일인데 그들은 받을 수가 없으므로, 이 버튼이 눌리는지가 그 절반을 건지고 있는지를
+  // 말해 준다(2026-07-27, 지금까지는 눌리는지조차 몰랐다).
+  track('copy_link')
+
   try {
     await navigator.clipboard.writeText(SITE)
     copied.value = true
@@ -57,6 +63,20 @@ const dl = {
 }
 // t는 computed(ComputedRef)라 <script setup> 최상단에서 t.download를 만지면 undefined다.
 // 라벨은 템플릿에서 t를 참조한다(템플릿은 ref를 자동 언랩한다).
+
+/// 어느 빌드를 받아 갔는지 남긴다.
+///
+/// 지금까지는 GitHub 릴리즈의 다운로드 수와 방문자 수를 눈으로 견줘 짐작했다. 그 둘은 기간도
+/// 기준도 달라서(릴리즈는 판마다 끊기고 봇도 섞인다) 전환율이라 부를 수 있는 값이 아니었다.
+/// 여기서 찍으면 같은 화면 안에서 방문 → 다운로드가 이어진다.
+///
+/// 링크를 막지 않는다(preventDefault 없음). 받는 링크는 페이지를 떠나게 하지 않고 브라우저가
+/// 내려받기만 시작하므로, 이벤트가 잘릴 자리가 없다.
+function trackDownload(build: 'setup' | 'portable' | 'light') {
+  if (!ready) return
+
+  track('download', { build, version })
+}
 </script>
 
 <template>
@@ -95,7 +115,7 @@ const dl = {
 
       <!-- 히어로: 설치 버전. 대부분 여기로 오므로 시선을 독점한다(채운 강조색 + 디스크 아이콘). -->
       <a class="hero" :class="{ 'is-disabled': !ready }" :href="ready ? dl.setup.href : undefined"
-         :aria-disabled="!ready">
+         :aria-disabled="!ready" @click="trackDownload('setup')">
         <span class="hero-main">
           <span class="hero-icon" aria-hidden="true">
             <!-- 디스크(저장) 아이콘 -->
@@ -129,7 +149,7 @@ const dl = {
       <!-- 보조 둘: 무설치 / 경량. 한 단 작고 옅게. -->
       <div class="alt-grid">
         <a class="alt" :class="{ 'is-disabled': !ready }" :href="ready ? dl.portable.href : undefined"
-           :aria-disabled="!ready">
+           :aria-disabled="!ready" @click="trackDownload('portable')">
           <span class="alt-icon" aria-hidden="true">
             <!-- 상자(포터블) 아이콘 -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -145,7 +165,7 @@ const dl = {
         </a>
 
         <a class="alt" :class="{ 'is-disabled': !ready }" :href="ready ? dl.light.href : undefined"
-           :aria-disabled="!ready">
+           :aria-disabled="!ready" @click="trackDownload('light')">
           <span class="alt-icon" aria-hidden="true">
             <!-- 번개(경량) 아이콘 -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
