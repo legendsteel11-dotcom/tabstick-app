@@ -11,6 +11,9 @@ const EMAIL = 'pjh85336@gmail.com'
         <div class="brand">
           <img src="/icon.png" alt="" width="20" height="20" />
           <span>TabStick</span>
+          <!-- 링크로 걸지 않는다 - 지금 그 주소에 서 있는 사람에게 자기 자신으로 가는
+               링크는 눌러도 아무 일이 없다. 여기서는 읽고 기억할 글자다. -->
+          <span class="domain">tabstick.com</span>
         </div>
         <a class="contact" :href="`mailto:${EMAIL}`">{{ t.footer.contact }}: {{ EMAIL }}</a>
       </div>
@@ -49,6 +52,19 @@ const EMAIL = 'pjh85336@gmail.com'
   font-weight: 700;
   color: var(--text-strong);
   font-size: 14px;
+}
+
+/* 이름 뒤에 가운뎃점으로 잇는다. 굵기·크기를 낮춰 이름과 경쟁하지 않게. */
+.domain::before {
+  content: '·';
+  margin-right: 8px;
+  opacity: 0.45;
+}
+
+.domain {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: 0.6;
 }
 
 .contact {

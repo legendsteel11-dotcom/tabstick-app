@@ -16,6 +16,7 @@ const dict = {
       features: '기타기능',
       howto: '사용방법',
       download: '다운로드',
+      faq: '자주 묻는 질문',
     },
     hero: {
       eyebrow: 'Windows 인덱스 스티커 메모',
@@ -72,7 +73,7 @@ const dict = {
     features: {
       title: '기타기능',
       items: [
-        { title: '메모 잠금', desc: '중요한 메모는 잠시 잠가둘 수 있습니다.' },
+        { title: '메모 잠금', desc: '중요한 메모는 잠시 잠가둘 수 있습니다. 잠긴 메모는 잠금을 풀 때까지 수정하거나 지울 수 없습니다.' },
         { title: '자동 저장', desc: '메모에서 글자를 입력하거나 변경할 때 자동으로 저장됩니다.' },
         { title: '자동 백업', desc: '앱의 종료, 내용 삭제 시에 자동으로 백업됩니다.' },
         { title: '편집 기능', desc: '메모에서 우클릭으로 자주 쓰는 기호나 구분선을 바로 입력할 수 있습니다.' },
@@ -141,6 +142,63 @@ const dict = {
       smartscreenNote:
         '처음 실행할 때 윈도우 SmartScreen 창이 뜨면 추가 정보 → 실행을 누르면 됩니다. 메모는 오직 사용자의 PC에만 저장됩니다.',
     },
+    // FAQ. 여기 오는 사람은 이미 관심이 생겨 스크롤을 내려온 사람이라, 같은 솔직함이
+    // 다운로드 버튼 옆에서와 달리 신뢰로 읽힌다. 다만 '드리는 말씀'에 있던 일곱 항목을
+    // 그대로 되살리지는 않았다 - 없는 기능 나열·경쟁 제품 추천·기대 낮추기 셋은 2026-07-26에
+    // 빼고 나서 다운로드가 늘었던 문구다. 여기 남긴 것은 전부 '왜 이렇게 만들었는가'다.
+    //
+    // 답을 "못 합니다"로 시작하지 않는다. 자동 재부착은 못 하는 것이 아니라 안 한 것이고,
+    // 메모리 수치는 결함이 아니라 표시 방식이다. 사실은 그대로 두되 문장은 만든 이유로 쓴다.
+    faq: {
+      title: '자주 묻는 질문',
+      items: [
+        // 메모리 항목은 2026-07-28에 뺐다(보류). 묻지도 않은 사람에게 수치를 먼저 꺼내면
+        // 걱정하지 않던 사람까지 걱정하게 만든다. 설명 자체가 필요 없어진 것은 아니므로,
+        // 실제로 질문이 들어오면 그때 되살린다. 문구 원문은 이 커밋 직전 이력에 있다.
+        // 순서가 문구만큼 중요하다. 사람은 위에서부터 읽으므로 되는 것을 먼저 두고,
+        // 안 되는 것은 사이에 끼운다. 몰아 두면 그 대목만 '못하는 것 목록'으로 읽힌다.
+        //
+        // 앞의 넷은 '적어 둔 것을 잃을까 봐'라는 한 가지 걱정을 따라간다 - 저장을 해야 하나 →
+        // 창을 닫아도 되나 → 다시 열면 어떻게 되나 → 지워 버렸는데. 자동 재부착만 '아니요'인데,
+        // 앞뒤가 전부 '남아 있습니다'라서 그 하나가 손실로 읽히지 않는다.
+        {
+          q: '메모를 쓰는 중에 매번 저장해야 하나요?',
+          a: '아니요. 저장 버튼이 아예 없습니다. 타이핑을 멈추면 곧바로, 다른 곳을 클릭하면 그 순간 저장됩니다. 컴퓨터를 껐다 켠 뒤 스티커를 다시 붙여도 쓰던 글이 그대로 있습니다.',
+        },
+        {
+          q: '창을 닫으면 메모 내용이 사라지나요?',
+          a: '아니요. 스티커는 팔레트로 돌아오고, 적어 둔 내용은 그대로 남습니다. 다른 창에 다시 붙이면 쓰던 메모가 그대로 이어집니다.',
+        },
+        {
+          q: '닫았던 창을 다시 열면 메모가 자동으로 붙나요?',
+          a: '자동으로 붙지는 않습니다. 마이크로소프트가 공식적으로 허용하는 기술만 써서 만들었고, 편법을 쓰면 가능했더라도 의도적으로 넣지 않았습니다. 스티커는 팔레트에 돌아와 있으니, 집어서 새 창에 붙이면 그대로 이어집니다.',
+        },
+        {
+          q: '저장하지 않고 메모를 지워버렸어요.',
+          a: '지우기 직전에 사본이 자동으로 남습니다(앱을 종료할 때도 남습니다). 파일 이름이 날짜와 스티커 색으로 되어 있어 눈으로 바로 찾을 수 있습니다 — backup_260728_yellow_0001.txt 같은 식입니다. 폴더는 문서 아래 TabStick이 기본이고, 앱 메뉴 → 설정 → 메모 백업 위치에서 확인하거나 바꿀 수 있습니다.',
+        },
+        {
+          q: '적어 둔 메모를 파일로 빼낼 수 있나요?',
+          a: '네. 한 장만 따로 저장할 수도 있고(스티커 우클릭 → 저장), 아홉 장을 한꺼번에 내보낼 수도 있습니다(팔레트의 ••• → 스티커 관리 → 내보내기). 한꺼번에 내보낼 때는 텍스트와 CSV 중에 고를 수 있어, 표 계산 프로그램에서 바로 열립니다.',
+        },
+        {
+          q: '다른 데 적어 둔 글을 메모로 가져올 수 있나요?',
+          a: '네. 스티커 우클릭 → 불러오기로 텍스트 파일을 그대로 읽어옵니다. 지금 적혀 있는 글을 덮어쓰기 전에 한 번 물어봅니다.',
+        },
+        {
+          q: '메모에 적은 링크나 폴더 경로를 바로 열 수 있나요?',
+          a: '네. Ctrl을 누른 채 클릭하면 기본 브라우저나 탐색기로 바로 열립니다.',
+        },
+        {
+          q: '스티커를 더 늘리거나, 메모지를 꾸밀 수 있나요?',
+          a: '스티커는 9개로 고정입니다. 메모가 무한정 늘어나 오히려 관리가 어려워지는 것 — 그걸 덜어 보려고 만든 앱이라, 9개라는 제한이 이 앱의 출발점입니다. 꾸미기보다 메모 본연의 기능에 무게를 두고 있습니다. 다만 메모지 배경색을 늘리는 것 같은 부분은 닫아 두지 않았습니다.',
+        },
+        {
+          q: '서버에 메모를 전송하나요?',
+          a: '아닙니다. 오직 사용자의 PC에만 저장됩니다. 업데이트 안내를 위해 GitHub에서 새 버전이 나왔는지만 확인할 뿐이고, 그때도 메모나 개인정보는 보내지 않습니다.',
+        },
+      ],
+    },
     footer: {
       contact: '문의',
       otherTool: '같은 개발자의 다른 도구',
@@ -155,6 +213,7 @@ const dict = {
       features: 'More',
       howto: 'How it works',
       download: 'Download',
+      faq: 'FAQ',
     },
     hero: {
       eyebrow: 'Windows index-sticker notes',
@@ -204,7 +263,7 @@ const dict = {
     features: {
       title: 'More',
       items: [
-        { title: 'Lock a note', desc: 'Lock an important note for a while.' },
+        { title: 'Lock a note', desc: 'Lock an important note for a while. A locked note cannot be edited or cleared until you unlock it.' },
         { title: 'Auto-save', desc: 'Saves automatically as you type or edit a note.' },
         { title: 'Automatic backup', desc: 'Backs up automatically when the app closes or content is deleted.' },
         { title: 'Editing tools', desc: 'Right-click in a note to drop in common symbols or a divider.' },
@@ -265,6 +324,47 @@ const dict = {
         "Planning to use Edgetree, this developer's other app, too? Install .NET 8 once and run the Light build of both — lighter on memory and disk.",
       smartscreenNote:
         'If Windows SmartScreen appears on the first run, choose More info → Run. Your notes are stored only on your PC.',
+    },
+    faq: {
+      title: 'Frequently asked',
+      items: [
+        {
+          q: 'Do I have to save while I am writing?',
+          a: 'No — there is no save button at all. It saves the moment you stop typing, and again the moment you click away. Shut the PC down, put the sticker back, and what you wrote is still there.',
+        },
+        {
+          q: 'If I close a window, do I lose what I wrote?',
+          a: 'No. The sticker returns to the palette and everything you wrote stays with it. Drop it on another window and the memo carries on where it left off.',
+        },
+        {
+          q: 'If I reopen a window I closed, does its memo come back on its own?',
+          a: 'Not on its own. This was built only with what Microsoft officially permits, and while tricks could have made it work, they were deliberately left out. The sticker is waiting in the palette — pick it up, drop it on the new window, and carry on.',
+        },
+        {
+          q: 'I deleted a memo without saving it.',
+          a: 'A copy is written automatically just before anything is deleted (and again when the app closes). The filename carries the date and the sticker colour, so you can spot it at a glance — backup_260728_yellow_0001.txt, for instance. The folder defaults to TabStick under Documents; check or change it under the app menu → Settings → Memo backup folder.',
+        },
+        {
+          q: 'Can I get my notes out as a file?',
+          a: 'Yes — one at a time or all at once. Right-click a sticker and choose Save for just that one; for everything, open Stickers from the ••• button on the palette and use Export. The bulk export offers plain text or CSV, so it opens straight into a spreadsheet.',
+        },
+        {
+          q: 'Can I bring in something I wrote elsewhere?',
+          a: 'Yes. Right-click a sticker and choose Load to read a text file straight in. It asks first, before replacing what is already written there.',
+        },
+        {
+          q: 'Can I open a link or folder path written in a memo?',
+          a: 'Yes. Ctrl+click opens it in your default browser or in Explorer.',
+        },
+        {
+          q: 'Can I add more stickers, or restyle the memo paper?',
+          a: 'Nine stickers, fixed. Notes piling up until they are harder to manage than helpful — easing that is why this app exists, so the limit of nine is where it starts. The weight goes on what a memo is for rather than on dressing it up. That said, things like more memo paper colours are not off the table.',
+        },
+        {
+          q: 'Do my notes go to a server?',
+          a: 'No. They are stored only on your PC. It checks GitHub for a newer version so it can tell you one exists — even then, no notes or personal data are sent.',
+        },
+      ],
     },
     footer: {
       contact: 'Requests',

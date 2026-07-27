@@ -7,6 +7,7 @@ import ScreenshotCards from './components/ScreenshotCards.vue'
 import FeatureGrid from './components/FeatureGrid.vue'
 import HowToUseSection from './components/HowToUseSection.vue'
 import DownloadSection from './components/DownloadSection.vue'
+import FaqSection from './components/FaqSection.vue'
 import AppFooter from './components/AppFooter.vue'
 
 // Initialize Vercel Analytics
@@ -22,6 +23,7 @@ inject()
     <FeatureGrid />
     <HowToUseSection />
     <DownloadSection />
+    <FaqSection />
   </main>
   <AppFooter />
 </template>

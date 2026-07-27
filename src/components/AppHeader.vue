@@ -8,6 +8,9 @@ import { t, lang, toggleLang } from '../i18n'
       <a href="#top" class="brand">
         <img src="/icon.png" alt="TabStick" width="28" height="28" />
         <span>TabStick</span>
+        <!-- 주소를 이름 옆에 붙여 스크롤 내내 눈에 남긴다(sticky 헤더).
+             자리가 빠듯해지는 좁은 화면에서는 숨긴다 - 아래 미디어쿼리. -->
+        <span class="domain">tabstick.com</span>
       </a>
 
       <nav class="nav">
@@ -16,6 +19,7 @@ import { t, lang, toggleLang } from '../i18n'
         <a href="#features">{{ t.nav.features }}</a>
         <a href="#howto">{{ t.nav.howto }}</a>
         <a href="#download">{{ t.nav.download }}</a>
+        <a href="#faq">{{ t.nav.faq }}</a>
       </nav>
 
       <button
@@ -60,6 +64,16 @@ import { t, lang, toggleLang } from '../i18n'
   flex-shrink: 0;
 }
 
+.domain {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.5;
+  padding-left: 10px;
+  border-left: 1px solid var(--border);
+  margin-left: 2px;
+}
+
 .nav {
   display: flex;
   gap: 24px;
@@ -98,6 +112,14 @@ import { t, lang, toggleLang } from '../i18n'
 
 .lang-toggle .active {
   color: var(--accent-strong);
+}
+
+/* 메뉴가 아직 살아 있는 폭에서 먼저 주소를 접는다. 로고·메뉴·언어 단추가 서로
+   밀기 시작하는 것이 이 언저리라, 셋 중 가장 덜 급한 것을 먼저 내린다. */
+@media (max-width: 900px) {
+  .domain {
+    display: none;
+  }
 }
 
 @media (max-width: 720px) {
