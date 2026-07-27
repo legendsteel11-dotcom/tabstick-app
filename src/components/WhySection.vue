@@ -70,6 +70,9 @@ import { t } from '../i18n'
      이탤릭이 없고 전역 font-synthesis:none이라 기울임이 안 그려진다 → 여기서만 style 합성 허용. */
   font-style: italic;
   font-synthesis: style;
+  /* 굵기는 2026-07-28 요청. 기울인 글씨는 획이 가늘어 보여 같은 굵기라도 옆 문단보다
+     묽게 읽힌다 - 600이면 기울임을 유지한 채 눈에 먼저 들어온다. */
+  font-weight: 600;
   color: var(--accent-strong);
 }
 
