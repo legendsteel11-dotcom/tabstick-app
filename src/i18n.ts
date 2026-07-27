@@ -30,8 +30,8 @@ const dict = {
         // 손해가 나는 일이라 앞에 세운다. 홀수가 되어 첫 항목만 가운데 한 칸으로 선다
         // (WhySection의 :first-child 규칙).
         '카톡 대화 중에 실수한 경험을 다시는 하고 싶지 않았습니다.',
-        '모니터 옆에 붙여놓은 스티커메모가 자주 떨어져 불편했습니다.',
         'AI와 대화할 때, 대화 작성 중에 잘못 엔터를 눌러 토큰 낭비하는 게 싫었습니다.',
+        '모니터 옆에 붙여놓은 스티커메모가 자주 떨어져 불편했습니다.',
         '레시피 하나 보려고 재료와 조리법 사이를 스크롤 하는 것이 귀찮았습니다.',
         '보다 끊긴 유튜브를 기록 검색창에서 찾는 것이 번거로웠습니다.',
       ],
@@ -47,7 +47,9 @@ const dict = {
         },
         {
           title: '모든 스티커는 창과 함께-',
-          desc: '창과 같이 움직이고, 창과 함께 최소화 되고, 창이 종료되면 팔레트로 돌아옵니다.',
+          // '팔레트로 돌아온다'만으로는 스티커만 돌아오고 글은 날아간 것으로 읽힐 수 있어
+          // 한 줄 더한다(2026-07-28). 앞 문장에 '종료'가 이미 있어 뒤는 '닫아도'로 받는다.
+          desc: '창과 같이 움직이고, 창과 함께 최소화 되고, 창이 종료되면 팔레트로 돌아옵니다. 실수로 닫았더라도 쓰던 내용은 그대로 남아 있습니다.',
         },
         {
           title: '단 9개의 스티커로 관리-',
@@ -59,7 +61,9 @@ const dict = {
         },
         {
           title: '보고 있는 창에서 바로 메모로-',
-          desc: '유튜브 주소, 텍스트를 바로 메모로 옮겨 놓으세요. 링크는 Ctrl+클릭으로 바로 이동할 수 있습니다.',
+          // 끌어다 놓기는 따로 구현한 것이 아니라 WPF TextBox가 원래 받는 동작이다.
+          // 코드에 Drop 핸들러가 없다고 안 되는 것으로 넘겨짚지 말 것(2026-07-28 실측 확인).
+          desc: '유튜브 주소, 텍스트를 바로 메모로 옮겨 놓으세요. 링크는 Ctrl+클릭으로 바로 이동할 수 있습니다. 반대로 창에서 주소나 글을 끌어다 메모에 놓으면 그대로 옮겨집니다.',
         },
         {
           title: '세가지 팔레트 모양과 크기-',
@@ -74,10 +78,12 @@ const dict = {
       title: '기타기능',
       items: [
         { title: '메모 잠금', desc: '중요한 메모는 잠시 잠가둘 수 있습니다. 잠긴 메모는 잠금을 풀 때까지 수정하거나 지울 수 없습니다.' },
-        { title: '자동 저장', desc: '메모에서 글자를 입력하거나 변경할 때 자동으로 저장됩니다.' },
-        { title: '자동 백업', desc: '앱의 종료, 내용 삭제 시에 자동으로 백업됩니다.' },
+        // 저장과 백업을 한 칸에 합쳤다(2026-07-28). 둘 다 '알아서 남긴다'는 한 얘기라
+        // 따로 세울 때보다 붙여 놓는 편이 뜻이 선명하고, 그 자리에 자동 시작이 들어왔다.
+        { title: '자동 저장·백업', desc: '글자를 입력하거나 바꿀 때 자동으로 저장되고, 앱을 종료하거나 내용을 삭제할 때는 따로 백업을 남깁니다.' },
         { title: '편집 기능', desc: '메모에서 우클릭으로 자주 쓰는 기호나 구분선을 바로 입력할 수 있습니다.' },
         { title: '스티커 찾기', desc: '팔레트에서 떠난 스티커를 추적하고 회수할 수 있습니다.' },
+        { title: '자동 시작', desc: '윈도우를 켤 때 팔레트가 함께 올라오도록 설정할 수 있습니다.' },
         { title: '설정 기억', desc: '사용자가 설정한 기능은 앱이 종료돼도 유지됩니다.' },
       ],
     },
@@ -93,8 +99,8 @@ const dict = {
           desc: '떠오르는 대로 빠르게 적으세요. 한 글자만 입력해도 자동 저장되고, 링크나 경로는 Ctrl+클릭으로 바로 열립니다.',
         },
         {
-          title: '메모지 자리와 크기 맞추기',
-          desc: '스티커 우클릭 메뉴에서 메모지를 창의 좌/우, 안/밖으로 보낼 수 있습니다(모든 스티커 공통). 가장자리나 모서리를 끌어 크기를 바꾸고, 더블클릭하면 내용에 맞게 자동으로 맞춰집니다. 크기를 바꿀 때 Shift를 누른 채 끌면 20px 격자에 맞아, 여러 메모지를 같은 크기로 맞추기 쉽습니다.',
+          title: '메모 자리와 크기 맞추기',
+          desc: '스티커 우클릭 메뉴에서 메모를 창의 좌/우, 안/밖으로 보낼 수 있습니다(모든 스티커 공통). 가장자리나 모서리를 끌어 크기를 바꾸고, 더블클릭하면 내용에 맞게 자동으로 맞춰집니다. 크기를 바꿀 때 Shift를 누른 채 끌면 20px 격자에 맞아, 여러 메모를 같은 크기로 맞추기 쉽습니다.',
         },
         {
           title: '떼고, 다시 붙이기',
@@ -137,10 +143,19 @@ const dict = {
       copied: '복사했습니다',
       soon: '다운로드 링크는 공개 준비 중입니다.',
       requirement: 'Windows 10 / 11 · 64비트',
+      // 메모리 이야기는 여기 한 곳에만 둔다(2026-07-28). FAQ에 "메모리가 커 보입니다" 항목을
+      // 세우면 걱정하지 않던 사람에게 수치를 먼저 쥐여 주는 꼴이라 뺐다.
+      //
+      // 경량을 권하지는 않는다 - .NET을 따로 챙겨야 하는 버전이라 대부분의 사람에게는
+      // 설치본이 맞다. 여기서는 "이미 설치해 두었다면 이런 길도 있다" 정도로만 말한다.
+      // 큰 쪽 숫자도 꺼내지 않는다. 작은 쪽이 실제 사용량이라고만 하면 충분하다.
       bothApps:
-        '이 개발자의 다른 앱 Edgetree도 함께 쓰실 계획이라면, .NET 8을 한 번 설치해 두시길 권합니다. 두 앱 모두 경량 버전으로 가볍게 돌아갑니다.',
+        '.NET 8 데스크톱 런타임을 한 번 설치해 두시면 경량 버전을 쓸 수 있고, 다른 앱 Edgetree도 작은 파일 하나로 사용할 수 있습니다. (다운로드 용량이 작고, 메모리도 실제 사용량으로 표시됩니다)',
+      // "메모는 오직 사용자 PC에만 저장됩니다"를 뒤에 붙여 두었다가 뺐다(2026-07-28).
+      // SmartScreen 경고 이야기 바로 뒤에서는 안심시키는 말이 아니라, 무언가 나가는지
+      // 의심해 보라는 신호로 읽힌다. 그 답은 FAQ가 맡는다 - 물어본 사람에게만 간다.
       smartscreenNote:
-        '처음 실행할 때 윈도우 SmartScreen 창이 뜨면 추가 정보 → 실행을 누르면 됩니다. 메모는 오직 사용자의 PC에만 저장됩니다.',
+        '처음 실행할 때 윈도우 SmartScreen 창이 뜨면 추가 정보 → 실행을 누르면 됩니다.',
     },
     // FAQ. 여기 오는 사람은 이미 관심이 생겨 스크롤을 내려온 사람이라, 같은 솔직함이
     // 다운로드 버튼 옆에서와 달리 신뢰로 읽힌다. 다만 '드리는 말씀'에 있던 일곱 항목을
@@ -176,8 +191,10 @@ const dict = {
           a: '자동으로 붙지는 않습니다. 마이크로소프트가 공식적으로 허용하는 기술만 써서 만들었고, 편법을 쓰면 가능했더라도 의도적으로 넣지 않았습니다. 스티커는 팔레트에 돌아와 있으니, 집어서 새 창에 붙이면 그대로 이어집니다.',
         },
         {
-          q: '저장하지 않고 메모를 지워버렸어요.',
-          a: '지우기 직전에 사본이 자동으로 남습니다(앱을 종료할 때도 남습니다). 파일 이름이 날짜와 스티커 색으로 되어 있어 눈으로 바로 찾을 수 있습니다 — backup_260728_yellow_0001.txt 같은 식입니다. 폴더는 문서 아래 TabStick이 기본이고, 앱 메뉴 → 설정 → 메모 백업 위치에서 확인하거나 바꿀 수 있습니다.',
+          q: '저장하지 않고 메모를 삭제해 버렸어요.',
+          // 앱이 쓰는 말은 '삭제'다(내 스티커의 내용 삭제 · 설정의 메모 전체 삭제).
+          // 랜딩에서만 '지우기'로 부르면 찾아 들어간 화면에 그 낱말이 없다.
+          a: '메모 내용을 삭제하기 직전에 사본이 자동으로 남습니다(앱을 종료할 때도 남습니다). 파일 이름이 날짜와 스티커 색으로 되어 있어 눈으로 바로 찾을 수 있습니다 — backup_260728_yellow_0001.txt 같은 식입니다. 폴더는 문서 아래 TabStick이 기본이고, 앱 메뉴 → 설정 → 메모 백업 위치에서 확인하거나 바꿀 수 있습니다.',
         },
         {
           q: '적어 둔 메모를 파일로 빼낼 수 있나요?',
@@ -192,8 +209,8 @@ const dict = {
           a: '네. Ctrl을 누른 채 클릭하면 기본 브라우저나 탐색기로 바로 열립니다.',
         },
         {
-          q: '스티커를 더 늘리거나, 메모지를 꾸밀 수 있나요?',
-          a: '스티커는 9개로 고정입니다. 메모가 무한정 늘어나 오히려 관리가 어려워지는 것 — 그걸 덜어 보려고 만든 앱이라, 9개라는 제한이 이 앱의 출발점입니다. 꾸미기보다 메모 본연의 기능에 무게를 두고 있습니다. 다만 메모지 배경색을 늘리는 것 같은 부분은 닫아 두지 않았습니다.',
+          q: '스티커를 더 늘리거나, 메모를 꾸밀 수 있나요?',
+          a: '스티커는 9개로 고정입니다. 메모가 무한정 늘어나 오히려 관리가 어려워지는 것 — 그걸 덜어 보려고 만든 앱이라, 9개라는 제한이 이 앱의 출발점입니다. 꾸미기보다 메모 본연의 기능에 무게를 두고 있습니다. 다만 메모 배경색을 늘리는 것 같은 부분은 닫아 두지 않았습니다.',
         },
         {
           q: '서버에 메모를 전송하나요?',
@@ -227,8 +244,8 @@ const dict = {
       items: [
         // 카카오톡은 영어권에 안 통해 일반화한다(a chat window).
         'I had sent the wrong thing in a chat window once, and never wanted to again.',
-        'The sticky notes beside my monitor kept falling off.',
         'Talking to an AI, I hated wasting tokens on a stray Enter mid-message.',
+        'The sticky notes beside my monitor kept falling off.',
         'Following one recipe, I was tired of scrolling between the ingredients and the steps.',
         'Digging a half-watched video out of my history was a chore.',
       ],
@@ -242,7 +259,7 @@ const dict = {
         },
         {
           title: 'Every sticky note stays with its window',
-          desc: 'It moves with the window, minimizes with it, and returns to the palette when the window closes.',
+          desc: 'It moves with the window, minimizes with it, and returns to the palette when the window closes. Close one by accident and what you wrote is still there.',
         },
         {
           title: 'Manage with just nine stickers',
@@ -254,7 +271,7 @@ const dict = {
         },
         {
           title: 'From the window you’re on, straight into a note',
-          desc: 'Drop a YouTube link or some text straight into a note. Ctrl+click a link to jump right to it.',
+          desc: 'Drop a YouTube link or some text straight into a note. Ctrl+click a link to jump right to it. The other way round, drag an address or some text from the window onto a note and it lands there as it is.',
         },
         {
           title: 'Three palette shapes and sizes',
@@ -266,10 +283,10 @@ const dict = {
       title: 'More',
       items: [
         { title: 'Lock a note', desc: 'Lock an important note for a while. A locked note cannot be edited or cleared until you unlock it.' },
-        { title: 'Auto-save', desc: 'Saves automatically as you type or edit a note.' },
-        { title: 'Automatic backup', desc: 'Backs up automatically when the app closes or content is deleted.' },
+        { title: 'Saves and backs itself up', desc: 'Saves as you type or edit, and writes a separate backup whenever the app closes or content is deleted.' },
         { title: 'Editing tools', desc: 'Right-click in a note to drop in common symbols or a divider.' },
         { title: 'Find a sticker', desc: 'Track down and reclaim a sticker that has left the palette.' },
+        { title: 'Start with Windows', desc: 'Set the palette to come up with your next boot.' },
         { title: 'Remembers your settings', desc: 'Whatever you set stays put even after the app closes.' },
       ],
     },
@@ -323,9 +340,9 @@ const dict = {
       soon: 'Download links are being prepared.',
       requirement: 'Windows 10 / 11 · 64-bit',
       bothApps:
-        "Planning to use Edgetree, this developer's other app, too? Install .NET 8 once and run the Light build of both — lighter on memory and disk.",
+        'Install the .NET 8 Desktop Runtime once and the Light build becomes an option — as does Edgetree, another app, from a single small file. (A smaller download, and the memory figure shows what is actually in use.)',
       smartscreenNote:
-        'If Windows SmartScreen appears on the first run, choose More info → Run. Your notes are stored only on your PC.',
+        'If Windows SmartScreen appears on the first run, choose More info → Run.',
     },
     faq: {
       title: 'Frequently asked',
@@ -344,7 +361,7 @@ const dict = {
         },
         {
           q: 'I deleted a memo without saving it.',
-          a: 'A copy is written automatically just before anything is deleted (and again when the app closes). The filename carries the date and the sticker colour, so you can spot it at a glance — backup_260728_yellow_0001.txt, for instance. The folder defaults to TabStick under Documents; check or change it under the app menu → Settings → Memo backup folder.',
+          a: 'A copy is written automatically just before a memo is deleted (and again when the app closes). The filename carries the date and the sticker colour, so you can spot it at a glance — backup_260728_yellow_0001.txt, for instance. The folder defaults to TabStick under Documents; check or change it under the app menu → Settings → Memo backup folder.',
         },
         {
           q: 'Can I get my notes out as a file?',
@@ -359,8 +376,8 @@ const dict = {
           a: 'Yes. Ctrl+click opens it in your default browser or in Explorer.',
         },
         {
-          q: 'Can I add more stickers, or restyle the memo paper?',
-          a: 'Nine stickers, fixed. Notes piling up until they are harder to manage than helpful — easing that is why this app exists, so the limit of nine is where it starts. The weight goes on what a memo is for rather than on dressing it up. That said, things like more memo paper colours are not off the table.',
+          q: 'Can I add more stickers, or restyle a memo?',
+          a: 'Nine stickers, fixed. Notes piling up until they are harder to manage than helpful — easing that is why this app exists, so the limit of nine is where it starts. The weight goes on what a memo is for rather than on dressing it up. That said, things like more memo background colours are not off the table.',
         },
         {
           q: 'Do my notes go to a server?',
