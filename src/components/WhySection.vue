@@ -48,6 +48,16 @@ import { t } from '../i18n'
   gap: 14px;
 }
 
+/* 맨 앞 한 줄은 홀로 선다(2026-07-27). 항목이 다섯이라 2열에 그냥 두면 마지막 줄에 하나가
+   남아 허전한데, 앞으로 보내면 그 자리가 오히려 머리글이 된다. 두 열을 가로지르되 폭은
+   한 칸 그대로 두고 가운데로 — 카드 크기가 나머지와 달라지면 특별 취급으로 보인다.
+   한 칸 폭 = 50% - (간격 14의 절반). */
+.questions li:first-child {
+  grid-column: 1 / -1;
+  width: calc(50% - 7px);
+  margin: 0 auto;
+}
+
 .questions li {
   position: relative;
   background: var(--bg-alt);
@@ -78,6 +88,11 @@ import { t } from '../i18n'
 @media (max-width: 720px) {
   .questions {
     grid-template-columns: 1fr;
+  }
+
+  /* 한 열이 되면 가운데 세울 것이 없다. 첫 줄도 남들과 같은 폭으로 돌린다. */
+  .questions li:first-child {
+    width: auto;
   }
 }
 </style>

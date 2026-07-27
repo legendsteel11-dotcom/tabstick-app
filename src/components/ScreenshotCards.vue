@@ -6,12 +6,15 @@ import { t, lang } from '../i18n'
 // 아무것도 자르지 않는다. 좁아져 비율이 어긋나는 모바일에서만 잘리는데, 컷마다 요점이 가운데에
 // 몰려 있어 center면 어느 쪽이 잘려도 요점이 남는다.
 //
-// 언어별 이미지: 영문판은 영문 UI 캡처(scp-en-*). 단 5번(팔레트 모양)은 UI 글자가 없어 언어무관이라
-// 한/영 공용(spc-05). 캡처가 없는 언어는 한글판으로 떨어진다.
-const KO = ['spc-01', 'spc-02', 'spc-03', 'spc-04', 'spc-05', 'spc-06']
-const EN = ['scp-en-01', 'scp-en-02', 'scp-en-03', 'scp-en-04', 'spc-05', 'scp-en-06']
+// 언어별 이미지: 영문판은 영문 UI 캡처(scp-en-*). 단 **앱 글자가 안 나오는 컷은 한/영 공용**이다 -
+// 팔레트 모양(spc-05)과 맨 앞 창 전환 GIF(spc-07)가 그렇다. 후자는 메모를 접은 채로 찍어 스티커가
+// 색 사각형으로만 보이므로, 언어를 바꿔 다시 찍을 이유가 없다.
+//
+// 확장자는 배열에 함께 적는다. 첫 칸이 움직이는 GIF라 png로 고정할 수 없다.
+const KO = ['spc-07.gif', 'spc-01.png', 'spc-02.png', 'spc-03.png', 'spc-04.png', 'spc-05.png']
+const EN = ['spc-07.gif', 'scp-en-01.png', 'scp-en-02.png', 'scp-en-03.png', 'scp-en-04.png', 'spc-05.png']
 const shots = computed(() =>
-  (lang.value === 'en' ? EN : KO).map((name) => ({ src: `${name}.png`, pos: 'center' })),
+  (lang.value === 'en' ? EN : KO).map((src) => ({ src, pos: 'center' })),
 )
 </script>
 

@@ -25,6 +25,10 @@ const dict = {
     why: {
       title: '왜 만들게 되었나요?',
       items: [
+        // 2026-07-27에 맨 앞에 한 줄 더했다. 나머지가 "있으면 편한 일"인 데 반해 이것은
+        // 손해가 나는 일이라 앞에 세운다. 홀수가 되어 첫 항목만 가운데 한 칸으로 선다
+        // (WhySection의 :first-child 규칙).
+        '카톡 대화 중에 실수한 경험을 다시는 하고 싶지 않았습니다.',
         '모니터 옆에 붙여놓은 스티커메모가 자주 떨어져 불편했습니다.',
         'AI와 대화할 때, 대화 작성 중에 잘못 엔터를 눌러 토큰 낭비하는 게 싫었습니다.',
         '레시피 하나 보려고 재료와 조리법 사이를 스크롤 하는 것이 귀찮았습니다.',
@@ -34,6 +38,12 @@ const dict = {
     screenshots: {
       title: '특징',
       items: [
+        // 2026-07-27 추가. 실사용자가 발견해서 알려준 쓰임새인데 어디에도 안 적혀 있었다 -
+        // 나머지 카드는 전부 "메모가 창을 따라간다"인 반면 이건 "창이 메모를 따라온다"다.
+        {
+          title: '겹친 창도 스티커 한 번으로-',
+          desc: '창을 여러 개 띄워 두어도, 스티커를 누르면 그 창이 바로 앞으로 나옵니다. 작업 표시줄에서 비슷한 아이콘을 뒤질 필요 없이 색으로 찾으세요.',
+        },
         {
           title: '모든 스티커는 창과 함께-',
           desc: '창과 같이 움직이고, 창과 함께 최소화 되고, 창이 종료되면 팔레트로 돌아옵니다.',
@@ -54,10 +64,9 @@ const dict = {
           title: '세가지 팔레트 모양과 크기-',
           desc: '기본형, 가로형, 세로형, 그리고 크기를 취향대로 선택하세요. 팔레트는 트레이 메뉴에서 언제든지 다시 불러올 수 있습니다.',
         },
-        {
-          title: '편리한 앱 메뉴-',
-          desc: '스티커 관리에서는 메모의 내용을 한번에 파악하고 지우거나 내보낼 수 있고, 궁금한 것은 언제든지 도움말에서 바로 확인할 수 있습니다.',
-        },
+        // '편리한 앱 메뉴' 카드는 2026-07-27에 뺐다. 관리 화면이 있다는 얘기라 어느 앱에나
+        // 있는 것이고, 받을 이유를 만드는 힘이 여섯 중 제일 약했다(사용자 판단). 캡처 spc-06은
+        // 파일로 남겨 뒀다.
       ],
     },
     features: {
@@ -155,6 +164,8 @@ const dict = {
     why: {
       title: 'Why I made it',
       items: [
+        // 카카오톡은 영어권에 안 통해 일반화한다(a chat window).
+        'I had sent the wrong thing in a chat window once, and never wanted to again.',
         'The sticky notes beside my monitor kept falling off.',
         'Talking to an AI, I hated wasting tokens on a stray Enter mid-message.',
         'Following one recipe, I was tired of scrolling between the ingredients and the steps.',
@@ -164,6 +175,10 @@ const dict = {
     screenshots: {
       title: 'Features',
       items: [
+        {
+          title: 'One click brings its window forward',
+          desc: 'Stack as many windows as you like — clicking a sticker pulls its window to the front. No more hunting through identical taskbar icons; pick it by colour.',
+        },
         {
           title: 'Every sticky note stays with its window',
           desc: 'It moves with the window, minimizes with it, and returns to the palette when the window closes.',
@@ -183,10 +198,6 @@ const dict = {
         {
           title: 'Three palette shapes and sizes',
           desc: 'Pick default, row, or column — and a size to taste. The palette is always a tray-menu click away.',
-        },
-        {
-          title: 'The app menu',
-          desc: 'The Stickers tab shows every note at a glance to delete or export, and help is a click away whenever you want it.',
         },
       ],
     },
