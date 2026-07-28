@@ -3,7 +3,7 @@ import { t } from '../i18n'
 </script>
 
 <template>
-  <section id="features" class="alt">
+  <section id="features" class="band">
     <div class="container">
       <div class="section-heading">
         <h2>{{ t.features.title }}</h2>
@@ -20,10 +20,12 @@ import { t } from '../i18n'
 </template>
 
 <style scoped>
-.alt {
-  background: var(--bg-alt);
+/* 번갈아 가는 섹션 배경에서 이 섹션은 어두운 쪽(--bg)이다 - 위(특징)와 아래(사용방법)가
+   둘 다 밝은 쪽이라 그 사이에 눌린 띠로 앉는다(2026-07-28). 차례는 ScreenshotCards 주석에.
+   클래스 이름은 원래 "번갈아 가는 쪽(alt)"이라는 뜻이었는데 이제 반대쪽을 가리키므로 band로 바꿨다. */
+.band {
+  background: var(--bg);
   border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
 }
 
 .grid {
@@ -32,10 +34,11 @@ import { t } from '../i18n'
   gap: 24px 32px;
 }
 
-/* 섹션 배경보다 살짝 눌러 칸을 구분한다. 왼쪽 강조선은 그대로 두고
-   오른쪽만 둥글려, 선이 카드에 물린 모양을 유지한다. */
+/* 섹션이 어두운 쪽으로 바뀌었으니 칸은 반대로 **띄운다**(2026-07-28 요청). 예전에는 밝은
+   섹션 위에 칸을 한 단계 눌러 앉혔는데, 그 방향 그대로 두면 어두운 섹션 위에서 칸이 배경에
+   묻힌다. 왼쪽 강조선은 그대로 두고 오른쪽만 둥글려, 선이 카드에 물린 모양을 유지한다. */
 .item {
-  background: var(--bg-sunken);
+  background: var(--bg-alt);
   border-left: 2px solid var(--accent);
   border-radius: 0 10px 10px 0;
   padding: 18px 20px;

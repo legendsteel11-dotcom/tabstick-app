@@ -42,6 +42,18 @@ const shots = computed(() =>
 </template>
 
 <style scoped>
+/* 섹션 배경은 위아래와 번갈아 간다(2026-07-28). 전체 차례는
+   히어로·제작동기(--bg) → 특징(--bg-alt) → 기타기능(--bg) → 사용방법(--bg-alt) →
+   다운로드(--bg) → FAQ(--bg-alt). 예전에는 규칙 없이 어떤 섹션끼리는 붙고 어떤 것은
+   갈려서, 어디가 한 덩이인지 읽히지 않았다. 히어로와 제작동기만 일부러 한 덩이로 둔다. */
+/* 가로선 규칙: **히어로 아래 모든 섹션이 자기 위에 선을 하나 갖는다.** 경계마다 한 줄뿐이라
+   겹쳐서 굵어지는 데가 없다. 두 배경 톤 차이가 워낙 작아 선이 실제로 경계를 만든다.
+   예외는 제작동기 하나 - 히어로와 한 덩이로 두기로 했으므로 그 사이에는 톤 변화도 선도 없다. */
+section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

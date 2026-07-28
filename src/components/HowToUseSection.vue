@@ -23,6 +23,12 @@ import { t } from '../i18n'
 </template>
 
 <style scoped>
+/* 번갈아 가는 섹션 배경(2026-07-28). 차례는 ScreenshotCards 주석에. */
+section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+}
+
 .steps {
   list-style: none;
   margin: 0 auto;

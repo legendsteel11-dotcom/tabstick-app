@@ -28,8 +28,10 @@ import { t } from '../i18n'
 </template>
 
 <style scoped>
+/* 배경·가로선 규칙은 ScreenshotCards 주석에. */
 section {
   background: var(--bg-alt);
+  border-top: 1px solid var(--border);
 }
 
 .list {
