@@ -65,6 +65,17 @@ onUnmounted(() => clearTimeout(clear))
         <a href="https://edgetree.vercel.app/" target="_blank" rel="noopener">{{ t.footer.otherToolName }}</a>
       </p>
 
+      <!-- 내장한 글꼴·아이콘 고지. 두 라이선스 모두 배포할 때 표기를 요구하므로 앱 정보 탭에도
+           같은 두 줄이 있고, 여기 것은 받기 전에도 볼 수 있게 두는 몫이다. 저작권 줄과 같은
+           무게로 낮춰 둔다 - 지켜야 해서 적는 것이지 읽히려고 적는 것이 아니다. -->
+      <p class="credits">
+        {{ t.footer.credits }}:
+        <a href="https://github.com/orioncactus/pretendard" target="_blank" rel="noopener">Pretendard</a>
+        (SIL OFL 1.1) ·
+        <a href="https://github.com/google/material-design-icons" target="_blank" rel="noopener">Material Symbols</a>
+        (Apache 2.0)
+      </p>
+
       <p class="copyright">{{ t.footer.copyright }}</p>
     </div>
   </footer>
@@ -170,6 +181,22 @@ onUnmounted(() => clearTimeout(clear))
 
 .other a:hover {
   text-decoration: underline;
+}
+
+.credits {
+  font-size: 13px;
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+
+.credits a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.credits a:hover {
+  color: var(--accent-strong);
 }
 
 .copyright {
