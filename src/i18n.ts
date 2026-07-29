@@ -130,12 +130,32 @@ const dict = {
       // **DownloadSection의 notesVersion·version과 함께 올린다.** 내역만 앞서 나가면 새 기능을
       // 광고하면서 링크는 옛 파일을 가리킨다.
       notesTitle: '업데이트 내역',
+      // 꺾쇠 단추의 읽어 주는 이름. 화면에는 안 보이고 스크린리더만 읽는다.
+      notesOlder: '이전 업데이트 내역',
+      notesNewer: '다음 업데이트 내역',
+      // 새 판이 나오면 **맨 위에** 한 덩이를 얹는다. 지난 판은 지우지 않는다 - 꺾쇠로 넘겨 본다.
+      // DownloadSection이 version보다 높은 덩이는 감추므로, 파일을 올리기 전에 미리 적어 두어도
+      // 광고가 앞서 나가지 않는다(예전 notesVersion 상수가 하던 일을 데이터가 스스로 한다).
+      // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
-        '스티커 우클릭 → 제목 입력 → 메모에 제목이 나타남(바로 편집 가능)',
-        '글꼴/메모 배경색 → 메모 우클릭으로 이동',
-        '스티커 우클릭 → 다시 집기 추가',
-        '윈도우 시작 시 자동실행 옵션 추가',
-        '모든 우클릭 메뉴 크기 조절 옵션 추가',
+        {
+          version: '1.0.4',
+          items: [
+            '팔레트 크기: 작게·보통·크게 → 50~130%',
+            '메모 글자 크기 범위를 11~24로 넓힘',
+            'Shift + 스티커 클릭 → 메모를 펴지 않고 그 창만 앞으로',
+          ],
+        },
+        {
+          version: '1.0.3',
+          items: [
+            '스티커 우클릭 → 제목 입력 → 메모에 제목이 나타남(바로 편집 가능)',
+            '글꼴/메모 배경색 → 메모 우클릭으로 이동',
+            '스티커 우클릭 → 다시 집기 추가',
+            '윈도우 시작 시 자동실행 옵션 추가',
+            '모든 우클릭 메뉴 크기 조절 옵션 추가',
+          ],
+        },
       ],
       // 줄바꿈은 마크업이 아니라 글의 일부다(.handoff p가 white-space: pre-line).
       mobileNote: 'Windows에서 쓰는 앱입니다.\n주소를 복사해 두었다가 PC에서 열어보세요.',
@@ -327,12 +347,27 @@ const dict = {
       lightTitle: 'Light',
       lightDesc: 'Needs the .NET 8 Desktop Runtime.',
       notesTitle: 'Update notes',
+      notesOlder: 'Older update notes',
+      notesNewer: 'Newer update notes',
       notes: [
-        'Sticker right-click → Title → the title appears on the memo (edit it there)',
-        "Font / memo background colour → moved to the memo's right-click menu",
-        'Sticker right-click → Pick up again, added',
-        'Option to start with Windows, added',
-        'Size option for every right-click menu, added',
+        {
+          version: '1.0.4',
+          items: [
+            'Palette size: Small / Normal / Large → 50-130%',
+            'Memo text size range widened to 11-24',
+            'Shift + click a sticker → bring its window forward without opening the memo',
+          ],
+        },
+        {
+          version: '1.0.3',
+          items: [
+            'Sticker right-click → Title → the title appears on the memo (edit it there)',
+            "Font / memo background colour → moved to the memo's right-click menu",
+            'Sticker right-click → Pick up again, added',
+            'Option to start with Windows, added',
+            'Size option for every right-click menu, added',
+          ],
+        },
       ],
       mobileNote: 'TabStick runs on Windows.\nCopy the link and open it on your PC.',
       copyLink: 'Copy link',

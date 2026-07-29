@@ -1,5 +1,5 @@
-﻿<script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
+<script setup lang="ts">
+import { computed, ref, onUnmounted } from 'vue'
 import { track } from '@vercel/analytics'
 import { t } from '../i18n'
 
@@ -41,13 +41,36 @@ const ready = true
 
 // 표시용 버전(배지 "v1.0.2")과 릴리즈 태그(v1.0.2)는 여기. channel이 비면 (Beta) 알약이 사라진다 -
 // 2026-07-26에 뗐다(개인 프로그램의 베타 표기가 "덜 만든 것"으로 읽힌다는 지적).
-const version = '1.0.3'
+const version = '1.0.4'
 const channel = ''
 
-// 업데이트 내역 카드가 다는 버전. **아직 배포되지 않은 버전이 여기 먼저 온다** - 내역은
-// 릴리즈 직전에 써 두고, 파일이 실제로 올라간 날 version을 같은 값으로 올린다. 둘이 같아지는
-// 순간이 배포다. 반대로 version만 올리고 이걸 두면 지난 버전의 내역이 새 버전 카드로 남는다.
-const notesVersion = '1.0.3'
+/**
+ * 업데이트 내역. 새 판이 i18n의 맨 위에 얹히고, 지난 판은 꺾쇠로 넘겨 본다.
+ *
+ * **아직 안 올라간 판은 감춘다.** 예전에는 notesVersion 상수를 따로 두고 "내역 먼저, 파일이
+ * 올라간 날 version을 맞춘다"로 손으로 맞췄는데, 둘 중 하나만 올리면 없는 파일을 광고하거나
+ * 지난 내역이 새 버전 카드로 남았다. 이제는 version보다 높은 덩이를 여기서 걸러내므로,
+ * 1.0.4 내역을 미리 적어 두어도 version이 1.0.3인 동안은 나오지 않는다.
+ */
+const rank = (v: string) => v.split('.').map(Number)
+
+const atOrBelow = (v: string) => {
+  const a = rank(v)
+  const b = rank(version)
+
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    const d = (a[i] ?? 0) - (b[i] ?? 0)
+    if (d !== 0) return d < 0
+  }
+  return true
+}
+
+const notes = computed(() => t.value.download.notes.filter((n) => atOrBelow(n.version)))
+
+// 0이 가장 최신. 언어를 바꿔도 덩이 수가 같으므로 보던 자리가 유지된다.
+const noteAt = ref(0)
+
+const note = computed(() => notes.value[Math.min(noteAt.value, notes.value.length - 1)])
 
 // 자산명 규칙: TabStick-<fileVer>-win-x64-<...>. 베타 땐 파일명에만 b를 붙였고(1.0.0b),
 // 정식부터는 version과 같다.
@@ -95,9 +118,23 @@ function trackDownload(build: 'setup' | 'portable' | 'light') {
            보는 자리라 새로 생긴 기능만 올린다. 고친 자리·내부 정리는 여기 올리지 않는다
            (받는 사람에겐 그동안 고장나 있었다는 말로만 읽힌다). -->
       <div class="notes">
-        <p class="notes-head">v{{ notesVersion }} {{ t.download.notesTitle }}</p>
+        <!-- 지난 판도 꺾쇠로 넘겨 본다(2026-07-29 요청). 꺾쇠는 제목 오른쪽에 붙인다 -
+             왼쪽에 두면 판이 쌓일 때 제목이 오른쪽으로 밀려 카드마다 시작선이 달라진다. -->
+        <div class="notes-head">
+          <span>v{{ note.version }} {{ t.download.notesTitle }}</span>
+
+          <!-- 넘길 판이 없으면 꺾쇠 자체를 안 그린다. 눌러도 아무 일 없는 단추 둘을 띄워 두는 것은
+               카드만 복잡하게 한다 - 판이 쌓이면 그때 저절로 나타난다. -->
+          <span v-if="notes.length > 1" class="turns">
+            <button type="button" class="turn" :disabled="noteAt >= notes.length - 1"
+                    :aria-label="t.download.notesOlder" @click="noteAt++">‹</button>
+            <button type="button" class="turn" :disabled="noteAt === 0"
+                    :aria-label="t.download.notesNewer" @click="noteAt--">›</button>
+          </span>
+        </div>
+
         <ul>
-          <li v-for="line in t.download.notes" :key="line">{{ line }}</li>
+          <li v-for="line in note.items" :key="line">{{ line }}</li>
         </ul>
       </div>
 
@@ -288,10 +325,48 @@ function trackDownload(build: 'setup' | 'portable' | 'light') {
 }
 
 .notes-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 15px;
   font-weight: 700;
   color: var(--accent-strong);
   margin-bottom: 10px;
+}
+
+/* 꺾쇠 둘은 제목 오른쪽에 붙여 한 묶음으로 둔다. */
+.turns {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 2px;
+}
+
+/* 판을 넘기는 꺾쇠. 제목과 같은 색이되 한 겹 물러나 있는다 - 있는 줄은 알되 제목보다 먼저
+   눈에 들지는 않게. 글자가 작아 잘 안 보이므로 제목보다 한 호 키우고, 누를 자리도 넉넉히 준다. */
+.turn {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+}
+
+.turn:hover:not(:disabled),
+.turn:focus-visible:not(:disabled) {
+  opacity: 1;
+}
+
+/* 갈 곳이 없는 쪽. 자리는 지키되 눌리지 않는다는 것이 보이는 선까지만 죽인다 -
+   너무 흐리면 아예 없는 것으로 읽혀 반대쪽 꺾쇠도 못 찾는다. */
+.turn:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .notes ul {
