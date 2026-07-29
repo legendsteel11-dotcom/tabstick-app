@@ -16,7 +16,7 @@ Grab the latest build from the [**Releases**](../../releases) page:
 |-------|-----|
 | `TabStick-<ver>-win-x64-setup.exe` | Most people — installs and uninstalls cleanly |
 | `TabStick-<ver>-win-x64-portable.zip` | No install — unzip and run |
-| `TabStick-<ver>-win-x64.exe` | Light build (needs the .NET 8 Desktop Runtime) |
+| `TabStick-<ver>-win-x64-light.exe` | Light build (needs the .NET 8 Desktop Runtime) |
 
 Windows 10 / 11, 64-bit.
 

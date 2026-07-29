@@ -78,11 +78,16 @@ const fileVer = version
 const base = `TabStick-${fileVer}-win-x64`
 
 // GitHub 릴리즈 자산으로 직접 링크. 태그는 v<version>, 파일명은 base.
+//
+// ⚠ **세 이름이 릴리즈에 올린 파일명과 글자 하나까지 같아야 한다.** 여기가 어긋나면 링크가
+// 404로 죽는데, 페이지는 멀쩡해 보여서 받으려는 사람만 안다. 실제로 경량이 1.0.5에서
+// `-win-x64.exe`→`-win-x64-light.exe`로 바뀌었는데 여기를 안 고쳐, 그 판이 나가 있는 내내
+// 경량만 404였다(2026-07-29, 제보로 발견). **버전을 올릴 때 이름 규칙도 함께 확인할 것.**
 const relBase = `https://github.com/legendsteel11/tabstick-app/releases/download/v${version}`
 const dl = {
   setup: { size: '49 MB', file: `${base}-setup.exe`, href: `${relBase}/${base}-setup.exe` },
   portable: { size: '64 MB', file: `${base}-portable.zip`, href: `${relBase}/${base}-portable.zip` },
-  light: { size: '5 MB', file: `${base}.exe`, href: `${relBase}/${base}.exe` },
+  light: { size: '5 MB', file: `${base}-light.exe`, href: `${relBase}/${base}-light.exe` },
 }
 // t는 computed(ComputedRef)라 <script setup> 최상단에서 t.download를 만지면 undefined다.
 // 라벨은 템플릿에서 t를 참조한다(템플릿은 ref를 자동 언랩한다).
