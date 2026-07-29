@@ -139,6 +139,14 @@ const dict = {
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
         {
+          version: '1.0.5',
+          items: [
+            '편집줄 끝에 커서 위치 개선',
+            '입력 커서 및 선택 영역 시인성 개선',
+            '스크롤바 시인성 개선',
+          ],
+        },
+        {
           version: '1.0.4',
           items: [
             '팔레트 크기: 작게·보통·크게 → 50~130%',
@@ -350,6 +358,14 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.0.5',
+          items: [
+            'Clicking at the end of a line now puts the caret there',
+            'Clearer text caret and selection highlight',
+            'Scroll bar is easier to see',
+          ],
+        },
         {
           version: '1.0.4',
           items: [
