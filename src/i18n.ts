@@ -139,6 +139,14 @@ const dict = {
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
         {
+          version: '1.0.6',
+          items: [
+            '창 크기를 조절하거나 옮길 때 더 가볍게 동작',
+            '메모 상단이나 제목을 잡고 위아래로 옮기기',
+            '펼쳐진 메모의 스티커에 연필 표시',
+          ],
+        },
+        {
           version: '1.0.5',
           items: [
             '편집줄 끝에 커서 위치 개선',
@@ -361,6 +369,14 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.0.6',
+          items: [
+            'Resizing and moving windows is lighter',
+            'Drag a memo by its top edge or title to move it up or down',
+            'The sticker of an open memo now shows a pencil',
+          ],
+        },
         {
           version: '1.0.5',
           items: [
