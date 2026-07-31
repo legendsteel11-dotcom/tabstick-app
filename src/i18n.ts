@@ -139,6 +139,13 @@ const dict = {
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
         {
+          version: '1.0.7',
+          items: [
+            '앱 성능 최적화 및 버그 수정',
+            '스티커 우클릭 메뉴 항목명 정리',
+          ],
+        },
+        {
           version: '1.0.6',
           items: [
             '창 크기를 조절하거나 옮길 때 더 가볍게 동작',
@@ -369,6 +376,13 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.0.7',
+          items: [
+            'Performance improvements and bug fixes',
+            'Tidier item names in the sticker right-click menu',
+          ],
+        },
         {
           version: '1.0.6',
           items: [
