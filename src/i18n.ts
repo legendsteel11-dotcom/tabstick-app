@@ -139,6 +139,13 @@ const dict = {
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
         {
+          version: '1.0.8',
+          items: [
+            '긴 메모에 글을 쓸 때 훨씬 가볍게',
+            '한 창의 메모 크기를 같게 맞추는 설정',
+          ],
+        },
+        {
           version: '1.0.7',
           items: [
             '앱 성능 최적화 및 버그 수정',
@@ -376,6 +383,13 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.0.8',
+          items: [
+            'Typing in a long memo is much lighter',
+            'A setting to keep memo sizes matched within a window',
+          ],
+        },
         {
           version: '1.0.7',
           items: [
