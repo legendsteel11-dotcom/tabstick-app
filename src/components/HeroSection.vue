@@ -15,6 +15,14 @@ const heroSrc = computed(() => (lang.value === 'en' ? '/screenshots/hero-en.gif'
         <!-- 제목 오른쪽 위에 ™처럼 걸려 있던 Beta 표시는 2026-07-26에 뗐다. -->
         <h1 class="title">{{ t.hero.title }}</h1>
         <p class="tagline">{{ t.hero.tagline }}</p>
+
+        <!-- 받을지 정하기 전에 알고 싶은 셋. 단점·해명을 앞세우지 않는다는 규칙과 부딪히지
+             않는다 - 이건 망설일 이유가 아니라 **받을 이유**다. 다만 문구는 긍정형으로 쓴다:
+             "데이터를 전송하지 않습니다"가 아니라 "메모는 내 PC에만". 없는 것을 말하면
+             묻지 않은 사람에게 질문을 심는다(2026-07-26에 그 자리에서 한 번 겪었다). -->
+        <ul class="badges">
+          <li v-for="b in t.hero.badges" :key="b">{{ b }}</li>
+        </ul>
       </div>
       <div class="shot">
         <img :src="heroSrc" alt="TabStick index notes attached to browser windows, with the color palette" />
@@ -66,6 +74,38 @@ h1 {
   line-height: 1.5;
   margin-bottom: 16px;
   font-weight: 500;
+}
+
+/* 성격 표시지 약속 목록이 아니다. 크게 박으면 그쪽이 첫인상이 되고, 나중에 Pro가 생겨
+   "무료"를 고칠 때도 자국이 크게 남는다. 태그라인보다 작고 흐리게 두어, 읽히되 앞서지
+   않게 한다. 가운데 정렬은 .copy가 이미 하고 있으므로 목록만 inline-flex로 모은다. */
+.badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.badges li {
+  font-size: 14.5px;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 항목 사이의 점. 글자 앞이 아니라 **앞 항목과의 사이**에 서야 첫 항목 왼쪽이 비지 않는다. */
+.badges li + li::before {
+  content: '';
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-soft);
+  opacity: 0.55;
+  margin-right: 11px;
 }
 
 .shot {

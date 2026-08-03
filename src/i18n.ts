@@ -22,6 +22,9 @@ const dict = {
       eyebrow: 'Windows 인덱스 스티커 메모',
       title: 'TabStick',
       tagline: '메모를 바탕화면이 아니라, 그 메모가 필요한 “창” 옆에 붙입니다.',
+      // "전송하지 않습니다"가 아니라 "내 PC에만"이다 - 같은 사실인데 앞은 없는 것을,
+      // 뒤는 만들어 둔 것을 말한다. 셋을 한 줄에 두어 약속 목록이 아니라 성격 표시로 읽히게.
+      badges: ['무료', '광고 없음', '메모는 내 PC에만'],
     },
     why: {
       title: '왜 만들게 되었나요?',
@@ -321,6 +324,7 @@ const dict = {
       eyebrow: 'Windows index-sticker notes',
       title: 'TabStick',
       tagline: 'Stick a note beside the window it belongs to — not on your desktop.',
+      badges: ['Free', 'No ads', 'Your notes stay on your PC'],
     },
     why: {
       title: 'Why I made it',
