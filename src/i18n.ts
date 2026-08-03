@@ -69,6 +69,13 @@ const dict = {
           title: '세가지 팔레트 모양과 크기-',
           desc: '기본형, 가로형, 세로형, 그리고 크기를 취향대로 선택하세요. 팔레트는 트레이 메뉴에서 언제든지 다시 불러올 수 있습니다.',
         },
+        // 2026-08-03 추가. 기타기능·사용방법에도 같은 얘기가 있는데, 여기는 '특징'이라
+        // 겹쳐도 된다(사용자 판단) - 저쪽은 찾아보는 자리고 여기는 보여주는 자리다.
+        // 일곱 번째라 3열 마지막 줄에 홀로 서고 두 칸이 빈다.
+        {
+          title: '원하는 색과 형식으로-',
+          desc: '원하는 메모색, 글자색으로 마음껏 미리 정해두고 사용할 수 있습니다. 또 자주 쓰는 기호로 형식을 지정하거나 체크박스를 사용할 수 있습니다.',
+        },
         // '편리한 앱 메뉴' 카드는 2026-07-27에 뺐다. 관리 화면이 있다는 얘기라 어느 앱에나
         // 있는 것이고, 받을 이유를 만드는 힘이 여섯 중 제일 약했다(사용자 판단). 캡처 spc-06은
         // 파일로 남겨 뒀다.
@@ -81,10 +88,15 @@ const dict = {
         // 저장과 백업을 한 칸에 합쳤다(2026-07-28). 둘 다 '알아서 남긴다'는 한 얘기라
         // 따로 세울 때보다 붙여 놓는 편이 뜻이 선명하고, 그 자리에 자동 시작이 들어왔다.
         { title: '자동 저장·백업', desc: '글자를 입력하거나 바꿀 때 자동으로 저장되고, 앱을 종료하거나 내용을 삭제할 때는 따로 백업을 남깁니다.' },
-        { title: '편집 기능', desc: '메모에서 우클릭으로 자주 쓰는 기호나 구분선을 바로 입력할 수 있습니다.' },
+        // 2026-08-03에 들어왔다. '편집 기능'(우클릭으로 기호·구분선 입력)이 있던 자리인데,
+        // 그 카드가 말하던 것을 이 카드가 넓혀서 담는다 - 둘을 나란히 두면 사용자 눈에는
+        // 같은 얘기가 두 번이다.
+        { title: '목록과 체크박스', desc: '여러 줄을 골라 기호를 누르면 각 줄 앞에 붙습니다. 할 일에는 체크박스를 달아 Ctrl+클릭으로 사용하세요.' },
+        { title: '메모 색 만들기', desc: '메모지 색을 취향대로 바꿔 보세요. 여섯 칸마다 배경색과 글자 색을 프리셋으로 만들고 언제든지 골라 사용할 수 있습니다.' },
         { title: '스티커 찾기', desc: '팔레트에서 떠난 스티커를 추적하고 회수할 수 있습니다.' },
         { title: '자동 시작', desc: '윈도우를 켤 때 팔레트가 함께 올라오도록 설정할 수 있습니다.' },
-        { title: '설정 기억', desc: '사용자가 설정한 기능은 앱이 종료돼도 유지됩니다.' },
+        // '설정 기억'은 2026-08-03에 뺐다. 설정이 유지되는 것은 어느 앱에서나 당연해서, 적어
+        // 두면 오히려 "안 그런 앱도 있나" 쪽으로 읽힌다. 여섯 칸이 3열에 정확히 떨어지기도 한다.
       ],
     },
     howto: {
@@ -99,8 +111,12 @@ const dict = {
           desc: '떠오르는 대로 빠르게 적으세요. 한 글자만 입력해도 자동 저장되고, 링크나 경로는 Ctrl+클릭으로 바로 열립니다.',
         },
         {
+          title: '메모 안에서 정리하기',
+          desc: '여러 줄을 골라 우클릭 메뉴에서 기호를 누르면 각 줄 앞에 붙습니다. 할 일 목록은 체크박스를 달아 Ctrl+클릭으로 사용하세요. 글자 크기와 줄 간격, 메모지 색은 메모마다 따로 정할 수 있습니다.',
+        },
+        {
           title: '메모 자리와 크기 맞추기',
-          desc: '스티커 우클릭 메뉴에서 메모를 창의 좌/우, 안/밖으로 보낼 수 있습니다(모든 스티커 공통). 가장자리나 모서리를 끌어 크기를 바꾸고, 더블클릭하면 내용에 맞게 자동으로 맞춰집니다. 크기를 바꿀 때 Shift를 누른 채 끌면 20px 격자에 맞아, 여러 메모를 같은 크기로 맞추기 쉽습니다.',
+          desc: '스티커 우클릭 메뉴에서 메모를 창의 좌/우, 안/밖으로 보낼 수 있습니다(모든 스티커 공통). 가장자리나 모서리를 끌어 크기를 바꾸고, 더블클릭하면 그 방향에 맞게 자동으로 맞춰집니다 — 아래 변은 높이, 왼쪽 변은 폭, 모서리는 처음 크기로. 크기를 바꿀 때 Shift를 누른 채 끌면 20px 격자에 맞아, 여러 메모를 같은 크기로 맞추기 쉽습니다.',
         },
         {
           title: '떼고, 다시 붙이기',
@@ -108,7 +124,7 @@ const dict = {
         },
         {
           title: '스티커 관리와 설정',
-          desc: '팔레트의 ••• 버튼을 누르면 스티커 관리가 열립니다. 아홉 메모의 내용을 한자리에서 보고, 파일로 내보내거나 삭제할 수 있습니다. 설정에서는 팔레트 모양, 앱·스티커 크기, 글자 크기, 다크/라이트, 언어를 바꿉니다.',
+          desc: '팔레트의 ••• 버튼을 누르면 스티커 관리가 열립니다. 아홉 메모의 내용을 한자리에서 보고, 파일로 내보내거나 삭제할 수 있습니다. 설정에서는 팔레트 모양, 앱·스티커 크기, 글자 크기와 줄 간격, 메모지 색, 다크/라이트, 언어를 바꿉니다.',
         },
       ],
     },
@@ -138,6 +154,18 @@ const dict = {
       // 광고가 앞서 나가지 않는다(예전 notesVersion 상수가 하던 일을 데이터가 스스로 한다).
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
+        {
+          version: '1.1.0',
+          items: [
+            '메모지 색을 직접 만듭니다.(프리셋 기능) 여섯 칸에 배경색과 글자색을 정해 두고 골라 쓸 수 있습니다.',
+            '행 간격을 여덟 단계로 조절합니다',
+            '여러 줄을 골라 기호를 누르면 줄머리 형식을 지정할 수 있습니다',
+            '체크박스가 생겼습니다. 네모를 Ctrl+클릭해 켜고 끕니다',
+            '가장자리 더블클릭이 폭 맞춤·높이 맞춤으로 단순해졌습니다',
+            '스티커 초기화 — 떼기·잠금 해제·비우기를 한 번에 합니다',
+            '기능 최적화 및 일부 버그 수정',
+          ],
+        },
         {
           version: '1.0.8',
           items: [
@@ -242,9 +270,11 @@ const dict = {
         },
         {
           q: '저장하지 않고 메모를 삭제해 버렸어요.',
-          // 앱이 쓰는 말은 '삭제'다(내 스티커의 내용 삭제 · 설정의 메모 전체 삭제).
-          // 랜딩에서만 '지우기'로 부르면 찾아 들어간 화면에 그 낱말이 없다.
-          a: '메모 내용을 삭제하기 직전에 사본이 자동으로 남습니다(앱을 종료할 때도 남습니다). 파일 이름이 날짜와 스티커 색으로 되어 있어 눈으로 바로 찾을 수 있습니다 — backup_260728_yellow_0001.txt 같은 식입니다. 폴더는 문서 아래 TabStick이 기본이고, 앱 메뉴 → 설정 → 메모 백업 위치에서 확인하거나 바꿀 수 있습니다.',
+          // 앱이 쓰는 말을 그대로 쓴다 - 랜딩에서만 다르게 부르면 찾아 들어간 화면에 그
+          // 낱말이 없다. 한 장을 비우는 자리는 2026-08-03에 '내용 삭제'에서 '스티커 초기화'로
+          // 바뀌었고, 전체를 지우는 '메모 전체 삭제'는 그대로다. 그래서 여기서는 버튼 이름을
+          // 부르지 않고 '삭제'라는 일반적인 말로만 받는다 - 어느 쪽으로 지웠든 답이 같다.
+          a: '메모 내용을 삭제하기 직전에 사본이 자동으로 남습니다(앱을 종료할 때도 남습니다). 파일 이름이 날짜와 스티커 색으로 되어 있어 눈으로 바로 찾을 수 있습니다 — backup_260728_yellow_0001.txt 같은 식입니다. 폴더는 문서 아래 TabStick이 기본이고, 앱 메뉴 → 설정 → 메모 백업 위치에서 열어 보거나 바꿀 수 있습니다.',
         },
         {
           q: '적어 둔 메모를 파일로 빼낼 수 있나요?',
@@ -260,7 +290,7 @@ const dict = {
         },
         {
           q: '스티커를 더 늘리거나, 메모를 꾸밀 수 있나요?',
-          a: '스티커는 9개로 고정입니다. 메모가 무한정 늘어나 오히려 관리가 어려워지는 것 — 그걸 덜어 보려고 만든 앱이라, 9개라는 제한이 이 앱의 출발점입니다. 꾸미기보다 메모 본연의 기능에 무게를 두고 있습니다. 다만 메모 배경색을 늘리는 것 같은 부분은 닫아 두지 않았습니다.',
+          a: '스티커는 9개로 고정입니다. 메모가 무한정 늘어나 오히려 관리가 어려워지는 것 — 그걸 덜어 보려고 만든 앱이라, 9개라는 제한이 이 앱의 출발점입니다. 꾸미기보다 메모 본연의 기능에 무게를 두고 있습니다. 다만 메모지 색은 여섯 칸을 직접 만들어 쓸 수 있게 열어 두었습니다.',
         },
         {
           q: '서버에 메모를 전송하나요?',
@@ -330,6 +360,10 @@ const dict = {
           title: 'Three palette shapes and sizes',
           desc: 'Pick default, row, or column — and a size to taste. The palette is always a tray-menu click away.',
         },
+        {
+          title: 'Your own colours and marks',
+          desc: 'Save the paper and text colours you like as presets, ready to pick whenever you want them. Mark up your lines with the symbols you reach for most, or add checkboxes.',
+        },
       ],
     },
     features: {
@@ -337,10 +371,10 @@ const dict = {
       items: [
         { title: 'Lock a note', desc: 'Lock an important note for a while. A locked note cannot be edited or cleared until you unlock it.' },
         { title: 'Saves and backs itself up', desc: 'Saves as you type or edit, and writes a separate backup whenever the app closes or content is deleted.' },
-        { title: 'Editing tools', desc: 'Right-click in a note to drop in common symbols or a divider.' },
+        { title: 'Lists and checkboxes', desc: 'Select several lines and pick a symbol to put one at the head of each. Add a checkbox to a to-do and use it with Ctrl+click.' },
+        { title: 'Make your own paper', desc: 'Give the paper the colours you like. Save a background and a text colour in each of the six slots as presets, ready to pick whenever you want.' },
         { title: 'Find a sticker', desc: 'Track down and reclaim a sticker that has left the palette.' },
         { title: 'Start with Windows', desc: 'Set the palette to come up with your next boot.' },
-        { title: 'Remembers your settings', desc: 'Whatever you set stays put even after the app closes.' },
       ],
     },
     howto: {
@@ -355,8 +389,12 @@ const dict = {
           desc: 'Write as it comes to you. A single character saves automatically, and links or paths open with Ctrl+click.',
         },
         {
+          title: 'Give the note some shape',
+          desc: 'Select several lines and pick a symbol from the right-click menu to put one at the head of each. For a to-do list, add checkboxes and use them with Ctrl+click. Text size, line spacing and paper colour can each be set per note.',
+        },
+        {
           title: 'Place and size the paper',
-          desc: 'From the sticker right-click menu, send the paper to the left or right of the window, inside or outside (applies to all stickers). Drag an edge or corner to resize, or double-click to fit the content. Hold Shift while resizing to snap to a 20px grid — handy for making several notes the same size.',
+          desc: 'From the sticker right-click menu, send the paper to the left or right of the window, inside or outside (applies to all stickers). Drag an edge or corner to resize, or double-click to fit that direction — the bottom edge fits the height, the left edge the width, and the corner puts both back. Hold Shift while resizing to snap to a 20px grid — handy for making several notes the same size.',
         },
         {
           title: 'Take it off, put it back',
@@ -364,7 +402,7 @@ const dict = {
         },
         {
           title: 'Stickers and settings',
-          desc: 'The ••• button on the palette opens the Stickers tab: read all nine notes in one place, export them to a file, or delete them. Settings cover the palette shape, app and sticker size, text size, dark/light, and language.',
+          desc: 'The ••• button on the palette opens the Stickers tab: read all nine notes in one place, export them to a file, or delete them. Settings cover the palette shape, app and sticker size, text size and line spacing, paper colours, dark/light, and language.',
         },
       ],
     },
@@ -383,6 +421,18 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.1.0',
+          items: [
+            'Make your own memo papers (presets). Set a background and a text colour in each of the six slots and pick from them.',
+            'Line spacing in eight steps',
+            'Select across lines and pick a symbol to format their heads',
+            'Checkboxes, ticked and cleared by Ctrl+clicking the box',
+            'Double-clicking an edge is now simply fit width or fit height',
+            'Reset a sticker - detach, unlock and empty in one press',
+            'Refinements and bug fixes',
+          ],
+        },
         {
           version: '1.0.8',
           items: [
@@ -459,7 +509,7 @@ const dict = {
         },
         {
           q: 'I deleted a memo without saving it.',
-          a: 'A copy is written automatically just before a memo is deleted (and again when the app closes). The filename carries the date and the sticker colour, so you can spot it at a glance — backup_260728_yellow_0001.txt, for instance. The folder defaults to TabStick under Documents; check or change it under the app menu → Settings → Memo backup folder.',
+          a: 'A copy is written automatically just before a memo is deleted (and again when the app closes). The filename carries the date and the sticker colour, so you can spot it at a glance — backup_260728_yellow_0001.txt, for instance. The folder defaults to TabStick under Documents; open or change it under the app menu → Settings → Memo backup folder.',
         },
         {
           q: 'Can I get my notes out as a file?',
@@ -475,7 +525,7 @@ const dict = {
         },
         {
           q: 'Can I add more stickers, or restyle a memo?',
-          a: 'Nine stickers, fixed. Notes piling up until they are harder to manage than helpful — easing that is why this app exists, so the limit of nine is where it starts. The weight goes on what a memo is for rather than on dressing it up. That said, things like more memo background colours are not off the table.',
+          a: 'Nine stickers, fixed. Notes piling up until they are harder to manage than helpful — easing that is why this app exists, so the limit of nine is where it starts. The weight goes on what a memo is for rather than on dressing it up. Paper colour is the one place left open: the six slots are yours to make.',
         },
         {
           q: 'Do my notes go to a server?',

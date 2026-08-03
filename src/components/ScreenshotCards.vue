@@ -11,8 +11,10 @@ import { t, lang } from '../i18n'
 // 색 사각형으로만 보이므로, 언어를 바꿔 다시 찍을 이유가 없다.
 //
 // 확장자는 배열에 함께 적는다. 첫 칸이 움직이는 GIF라 png로 고정할 수 없다.
-const KO = ['spc-07.gif', 'spc-01.png', 'spc-02.png', 'spc-03.png', 'spc-04.png', 'spc-05.png']
-const EN = ['spc-07.gif', 'scp-en-01.png', 'scp-en-02.png', 'scp-en-03.png', 'scp-en-04.png', 'spc-05.png']
+// 2026-08-03에 한 컷이 붙어 양쪽 다 일곱 칸이 되었다. 3열이라 마지막 줄에 홀로 서고 두 칸이
+// 빈다 - 의도한 모양이다. 설정·프리셋 창의 글자가 크게 보이는 컷이라 언어별로 따로 찍었다.
+const KO = ['spc-07.gif', 'spc-01.png', 'spc-02.png', 'spc-03.png', 'spc-04.png', 'spc-05.png', 'spc-08.png']
+const EN = ['spc-07.gif', 'scp-en-01.png', 'scp-en-02.png', 'scp-en-03.png', 'scp-en-04.png', 'spc-05.png', 'scp-en-08.png']
 const shots = computed(() =>
   (lang.value === 'en' ? EN : KO).map((src) => ({ src, pos: 'center' })),
 )

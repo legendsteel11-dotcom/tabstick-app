@@ -53,7 +53,7 @@ const ready = true
 
 // 표시용 버전(배지 "v1.0.2")과 릴리즈 태그(v1.0.2)는 여기. channel이 비면 (Beta) 알약이 사라진다 -
 // 2026-07-26에 뗐다(개인 프로그램의 베타 표기가 "덜 만든 것"으로 읽힌다는 지적).
-const version = '1.0.8'
+const version = '1.1.0'
 const channel = ''
 
 /**
@@ -401,6 +401,14 @@ function trackDownload(build: 'setup' | 'portable' | 'light') {
   font-size: 15.5px;
   line-height: 1.65;
   opacity: 0.85;
+}
+
+/* 각 판의 첫 줄은 그 판을 대표하는 기능이다. 나머지와 같은 세기로 두면 목록에 묻힌다 -
+   흐림만 걷고 한 눈금 굵혀, 훑어보는 눈이 먼저 걸리게 한다. 새 판을 적을 때도 대표
+   기능을 맨 위에 두면 이 규칙이 그대로 듣는다. */
+.notes li:first-child {
+  opacity: 1;
+  font-weight: 600;
 }
 
 .notes li::before {
