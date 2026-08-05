@@ -79,6 +79,12 @@ const dict = {
           title: '원하는 색과 형식으로-',
           desc: '원하는 메모색, 글자색으로 마음껏 미리 정해두고 사용할 수 있습니다. 또 자주 쓰는 기호로 형식을 지정하거나 체크박스를 사용할 수 있습니다.',
         },
+        // 2026-08-05 추가(v1.2.0). 캡처는 장 보는 페이지에 붙은 메모라, 무엇에 쓰는지가
+        // 문장보다 그림에서 먼저 읽힌다.
+        {
+          title: '메모 안에서 바로 계산-',
+          desc: '숫자가 들어있는 행들을 선택한 상태에서 우클릭 메뉴의 연산기호를 선택하면 답을 아래쪽에 표시합니다. 2500 * 4 처럼 적은 행들을 선택한 후 +를 누르면 미리 곱한 후 합산되며, 제일 위에 예산을 적고 전부 선택한 후 -를 누르면 잔액이 계산됩니다.',
+        },
         // '편리한 앱 메뉴' 카드는 2026-07-27에 뺐다. 관리 화면이 있다는 얘기라 어느 앱에나
         // 있는 것이고, 받을 이유를 만드는 힘이 여섯 중 제일 약했다(사용자 판단). 캡처 spc-06은
         // 파일로 남겨 뒀다.
@@ -94,8 +100,8 @@ const dict = {
         // 2026-08-03에 들어왔다. '편집 기능'(우클릭으로 기호·구분선 입력)이 있던 자리인데,
         // 그 카드가 말하던 것을 이 카드가 넓혀서 담는다 - 둘을 나란히 두면 사용자 눈에는
         // 같은 얘기가 두 번이다.
-        { title: '목록과 체크박스', desc: '여러 줄을 골라 기호를 누르면 각 줄 앞에 붙습니다. 할 일에는 체크박스를 달아 Ctrl+클릭으로 사용하세요.' },
-        { title: '메모 색 만들기', desc: '메모지 색을 취향대로 바꿔 보세요. 여섯 칸마다 배경색과 글자 색을 프리셋으로 만들고 언제든지 골라 사용할 수 있습니다.' },
+        { title: '목록과 체크박스', desc: '여러 줄을 선택해 기호를 누르면 각 줄 앞에 붙습니다. 할 일에는 체크박스를 달아 Ctrl+클릭으로 사용하세요.' },
+        { title: '메모 색 만들기', desc: '메모지 색을 취향대로 바꿔 보세요. 여섯 칸마다 배경색과 글자 색을 프리셋으로 만들고 언제든지 선택해 사용할 수 있습니다.' },
         { title: '스티커 찾기', desc: '팔레트에서 떠난 스티커를 추적하고 회수할 수 있습니다.' },
         { title: '자동 시작', desc: '윈도우를 켤 때 팔레트가 함께 올라오도록 설정할 수 있습니다.' },
         // '설정 기억'은 2026-08-03에 뺐다. 설정이 유지되는 것은 어느 앱에서나 당연해서, 적어
@@ -115,7 +121,7 @@ const dict = {
         },
         {
           title: '메모 안에서 정리하기',
-          desc: '여러 줄을 골라 우클릭 메뉴에서 기호를 누르면 각 줄 앞에 붙습니다. 할 일 목록은 체크박스를 달아 Ctrl+클릭으로 사용하세요. 글자 크기와 줄 간격, 메모지 색은 메모마다 따로 정할 수 있습니다.',
+          desc: '여러 줄을 선택해 우클릭 메뉴에서 기호를 누르면 각 줄 앞에 붙습니다. 할 일 목록은 체크박스를 달아 Ctrl+클릭으로 사용하세요. 글자 크기와 줄 간격, 메모지 색은 메모마다 따로 정할 수 있습니다.',
         },
         {
           title: '메모 자리와 크기 맞추기',
@@ -158,11 +164,21 @@ const dict = {
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
         {
+          version: '1.2.0',
+          items: [
+            '메모 안에서 바로 계산합니다. 숫자를 선택하고 우클릭 메뉴에서 + − × ÷ %를 사용하면 됩니다',
+            '2500 * 4처럼 적은 줄은 곱해서 더합니다. 목록을 그대로 적고 +하여 합계, 제일 위에 예산을 적고 -를 하면 잔액이 산출됩니다',
+            '메모 제목 줄이 바로 표시되는 옵션이 추가되었습니다. 메모 제목 줄을 잡고 위치를 이동할 수 있습니다',
+            '창이 화면을 꽉 채울 때 스티커를 창 안으로 들일지 선택합니다',
+            '기능 최적화 및 일부 버그 수정',
+          ],
+        },
+        {
           version: '1.1.0',
           items: [
-            '메모지 색을 직접 만듭니다.(프리셋 기능) 여섯 칸에 배경색과 글자색을 정해 두고 골라 쓸 수 있습니다.',
+            '메모지 색을 직접 만듭니다.(프리셋 기능) 여섯 칸에 배경색과 글자색을 정해 두고 선택해 쓸 수 있습니다.',
             '행 간격을 여덟 단계로 조절합니다',
-            '여러 줄을 골라 기호를 누르면 줄머리 형식을 지정할 수 있습니다',
+            '여러 줄을 선택해 기호를 누르면 줄머리 형식을 지정할 수 있습니다',
             '체크박스가 생겼습니다. 네모를 Ctrl+클릭해 켜고 끕니다',
             '가장자리 더블클릭이 폭 맞춤·높이 맞춤으로 단순해졌습니다',
             '스티커 초기화 — 떼기·잠금 해제·비우기를 한 번에 합니다',
@@ -368,6 +384,10 @@ const dict = {
           title: 'Your own colours and marks',
           desc: 'Save the paper and text colours you like as presets, ready to pick whenever you want them. Mark up your lines with the symbols you reach for most, or add checkboxes.',
         },
+        {
+          title: 'Add it up without leaving the note',
+          desc: 'Select the lines that hold numbers, pick an operator from the right-click menu, and the answer appears below them. Lines written as 11.68 * 2 are multiplied first and then added when you press +, and with your budget on the top line, selecting everything and pressing - gives you what is left.',
+        },
       ],
     },
     features: {
@@ -425,6 +445,16 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.2.0',
+          items: [
+            'Calculate inside a memo - select the numbers and use + - × ÷ % in the right-click menu',
+            'A line written 2500 * 4 counts as its product. Write the list as it is and press + for the total, or put your budget on the first line and press - for what is left',
+            'A setting shows the memo title line right away, and that line can be dragged to move the memo',
+            'Choose whether stickers move inside a window that fills the screen',
+            'Refinements and bug fixes',
+          ],
+        },
         {
           version: '1.1.0',
           items: [
