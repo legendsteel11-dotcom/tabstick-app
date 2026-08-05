@@ -239,7 +239,10 @@ const dict = {
       copyLink: '주소 복사',
       copied: '복사했습니다',
       soon: '다운로드 링크는 공개 준비 중입니다.',
-      requirement: 'Windows 10 / 11 · 64비트',
+      // 지원 언어를 여기 함께 적는다(2026-08-05). 프리웨어 아카이브들이 받기 버튼 근처를
+      // 긁어 가는데, 어디에도 적혀 있지 않아 oldergeeks 등록 페이지에 "지원 언어: 찾을 수 없음"
+      // 으로 실렸다. 이미 아는 사실을 문장으로 세워 두기만 하면 되는 일이다.
+      requirement: 'Windows 10 / 11 · 64비트 · 한국어 · English',
       // 메모리 이야기는 여기 한 곳에만 둔다(2026-07-28). FAQ에 "메모리가 커 보입니다" 항목을
       // 세우면 걱정하지 않던 사람에게 수치를 먼저 쥐여 주는 꼴이라 뺐다.
       //
@@ -441,7 +444,9 @@ const dict = {
       portableDesc: 'Unzip and run. No installation.',
       lightTitle: 'Light',
       lightDesc: 'Needs the .NET 8 Desktop Runtime.',
-      notesTitle: 'Update notes',
+      // 영문은 Changelog로 적는다(2026-08-05) - 아카이브들이 그 낱말로 찾는데 "Update notes"는
+      // 못 잡아, oldergeeks 등록 페이지의 변경 사항 칸이 "찾을 수 없음"으로 비었다.
+      notesTitle: 'Changelog',
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
@@ -520,7 +525,8 @@ const dict = {
       copyLink: 'Copy link',
       copied: 'Copied',
       soon: 'Download links are being prepared.',
-      requirement: 'Windows 10 / 11 · 64-bit',
+      // 영문 화면에서는 언어 이름도 영어로 적는다 - 긁어 가는 쪽이 읽는 것은 이 화면이다.
+      requirement: 'Windows 10 / 11 · 64-bit · English · Korean',
       bothApps:
         'Install the .NET 8 Desktop Runtime once and the Light build becomes an option — as does Edgetree, another app, from a single small file. (A smaller download, and the memory figure shows what is actually in use.)',
       smartscreenNote:
