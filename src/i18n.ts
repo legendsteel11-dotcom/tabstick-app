@@ -164,6 +164,14 @@ const dict = {
       // 1.0.2 이하는 싣지 않는다 - 한두 줄 요약뿐이라 목록이 채워 넣은 것처럼 보인다.
       notes: [
         {
+          version: '1.2.1',
+          items: [
+            '새 판이 나오면 앱이 알려 줍니다. 앱 정보 탭과 트레이 메뉴에서 확인하고 바로 받을 수 있습니다',
+            '메모에서 기호·글자 크기·계산 사용이 용이해졌습니다. 선택 영역을 벗어나 우클릭해도 선택이 유지됩니다',
+            '기능 최적화 및 일부 버그 수정',
+          ],
+        },
+        {
           version: '1.2.0',
           items: [
             '메모 안에서 바로 계산합니다. 숫자를 선택하고 우클릭 메뉴에서 + − × ÷ %를 사용하면 됩니다',
@@ -450,6 +458,14 @@ const dict = {
       notesOlder: 'Older update notes',
       notesNewer: 'Newer update notes',
       notes: [
+        {
+          version: '1.2.1',
+          items: [
+            'The app now tells you when a new version is out - check the About tab or the tray menu and get it there',
+            'Symbols, text size and the sum row are easier to use in a memo - the selection holds even when the right click lands outside it',
+            'Refinements and bug fixes',
+          ],
+        },
         {
           version: '1.2.0',
           items: [
